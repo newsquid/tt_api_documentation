@@ -1,25 +1,29 @@
 # Group ExternalPosts
 External posts added by the users of the blogging platform.
 
-An ExternalPublisher resource has the following attributes:
+An ExternalPost resource has the following attributes:
 
-- Id
-- CreatedAt
-- UpdatedAt
-- Url
-- ImageUrl
-- Title
-- Teaser
-- ExternalPublisherId
-- OwnerId 
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **Url**: (string, required) URL of the external post (article) 
+- **ImageUrl**: (string, optional) URL of the image of the external post if one exists
+- **Title**: (string, required) The title of the external post 
+- **Teaser**: (string, optional) A teaser text displayed with the external post 
+- **ExternalPublisherId**: (int, optional) The id of the external publisher
+where the external post is published. If no external publisher exists fo the
+post, set this to 0.
+- **OwnerId **: (int, required) The is of the user who created and therefore owns the external post
 
 The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *OwnerId* are set by the TrunkTrunk API.
 
 
-## ExternalPosts [/external/posts]
-Actions on the collection of all external posts.
+## -> /external/posts [/external/posts]
 
-### Create an ExternalPost [POST]
+### Create [POST]
+Create a new external post.
+
+Any signed in user can create an external post.
 
 + Request (application/json)
 
@@ -45,7 +49,10 @@ Actions on the collection of all external posts.
           "OwnerId": "2"
         }
 
-### Update an ExternalPost [PUT]
+### Update [PUT]
+Update an existing external post.
+
+Only the owner of the external post is allowed to edit it.
 
 + Request (application/json)
 
@@ -73,13 +80,16 @@ Actions on the collection of all external posts.
         }
 
 
-## Single ExternalPosts [/external/posts/{id}]
-Actions on single ExternalPost resource.
+## -> /external/posts/{id} [/external/posts/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the ExternalPost on which the action is done.
+    + id (required, number, `1`) ... Id of the ExternalPost.
 
-### Retrieve an ExternalPosts [GET]
+### Get [GET]
+Get the external post with the given id.
+
+Any user can do this request. The caller does not need to be signed in.
+
 + Response 200 (application/json)
 
         {
@@ -94,17 +104,24 @@ Actions on single ExternalPost resource.
           "OwnerId": "2"
         }
 
-### Delete an ExternalPost [DELETE]
+### Delete [DELETE]
+Delete the external post with the given id.
+
+Only the owner of the external post is allowed to delete it.
+
 + Response 204
 
 
-## ExternalPosts by user [/external/posts/user/{id}]
-Actions on single ExternalPost resource.
+## -> /external/posts/user/{id} [/external/posts/user/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the user whose external posts are target of the action to be done.
+    + id (required, number, `1`) ... Id of the user.
 
-### Retrieve an ExternalPosts [GET]
+### Get [GET]
+Get all external posts of the user with the given id.
+
+Any user can do this request. The caller does not need to be signed in.
+
 + Response 200 (application/json)
 
         [
