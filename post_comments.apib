@@ -3,12 +3,12 @@ Handles post comments (users commenting on posts).
 
 A PostComment resource has the following attributes:
 
-- Id
-- CreatedAt
-- UpdatedAt
-- UserId
-- PostId
-- Content
+- **Id**: (int, required) Unique identifier for the resource 
+- **CreatedAt**: (datetime, required) The time of creation of the resource 
+- **UpdatedAt**: (datetime, required) The time of last update of the resource 
+- **UserId**: (int, required) The id of the user who created the comment
+- **PostId**: (int, required) The id of the comment to which the comment applies 
+- **Content**: (string, required) The comment text 
 
 The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *UserId* are set by the TrunkTrunk API.
 
@@ -39,7 +39,7 @@ Any signed in user is allowed to create a comment.
         }
 
 ### Update [PUT]
-Edit an existing comment.
+Update an existing comment.
 
 Only the creator of a comment can edit it.
 
