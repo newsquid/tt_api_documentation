@@ -172,3 +172,35 @@ Actions on the collection of featured posts.
           "Published": "true"
         }]
 
+## Search [/posts{?search}]
+Retrieve all posts matching the given search parameter.
+
++ Parameters
+    + search (required, string) ... Search string. The terms with which to search.
+
+### Search for posts [GET]
++ Response 200 (application/json)
+
+        [{
+          "Id": 1, 
+          "Revision": 3, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "Published": "true"
+        }, {
+          "Id": 2, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 2", 
+          "Content": "Content of Post 2", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "Published": "true"
+        }]
