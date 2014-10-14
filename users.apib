@@ -103,3 +103,44 @@ Actions on single User resource.
           "LinkedInLink": "",
           "WebsiteLink": ""
         }
+
+
+## Users by group [/users/group/{id}]
+Actions on the users members of a single Group resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the group whose members (users) are target of the action to be done.
+
+### Retrieve groups [GET]
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 1, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "User 1",
+              "Email": "user1@example.org",
+              "Title": "Freelance writer", 
+              "Description": "Description of User 1",
+              "FacebookLink": "",
+              "TwitterLink": "",
+              "GooglePlusLink": "",
+              "LinkedInLink": "",
+              "WebsiteLink": ""
+            },
+            {
+              "Id": 3, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "User 3",
+              "Email": "user3@example.org",
+              "Title": "Freelance publisher", 
+              "Description": "Description of User 3",
+              "FacebookLink": "http://facebook.com/user3",
+              "TwitterLink": "http://twitter.com/user3",
+              "GooglePlusLink": "",
+              "LinkedInLink": "",
+              "WebsiteLink": ""
+            }
+        ]
