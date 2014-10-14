@@ -1,0 +1,42 @@
+# Group Files
+File uploads
+
+A File resource has the following attributes:
+
+- Id
+- CreatedAt
+- ContentType
+- Url
+
+All attributes are set by the TrunkTrunk API.
+
+
+## Files [/files]
+
+### Upload a file [POST]
+Upload a file as multipart/form-data and retrieve File resource describing the
+file. The File resource includes a public url to the file, which can be used
+in other resources where such an url is needed.
+
++ Request (multipart/form-data; boundary=---BOUNDARY)
+
+        -----BOUNDARY
+        Content-Disposition: form-data; name="image[file]"; filename="image.jpg"
+        Content-Type: image/jpeg
+        Content-Transfer-Encoding: base64
+
+        /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+        HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+        MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIA
+        AhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEB
+        AAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z
+        -----BOUNDARY
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "ContentType": "image/jpeg",
+          "Url": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image"
+        }

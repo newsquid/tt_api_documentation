@@ -6,3 +6,4 @@ group_memberships.apib
 external_posts.apib
 external_publishers.apib
 abuse_reports.apib
+files.apib
