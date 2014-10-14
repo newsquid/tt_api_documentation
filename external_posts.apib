@@ -1,0 +1,133 @@
+# Group ExternalPosts
+External posts added by the users of the blogging platform.
+
+An ExternalPublisher resource has the following attributes:
+
+- Id
+- CreatedAt
+- UpdatedAt
+- Url
+- ImageUrl
+- Title
+- Teaser
+- ExternalPublisherId
+- OwnerId 
+
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *OwnerId* are set by the TrunkTrunk API.
+
+
+## ExternalPosts [/external/posts]
+Actions on the collection of all external posts.
+
+### Create an ExternalPost [POST]
+
++ Request (application/json)
+
+        {
+          "Url": "http://www.example.com/",
+          "ImageUrl": "http://www.example.com/logo",
+          "Title": "External Post 1 title",
+          "Teaser": "External Post 1 teaser",
+          "ExternalPublisherId": "3",
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Url": "http://www.example.com/",
+          "ImageUrl": "http://www.example.com/logo",
+          "Title": "External Post 1 title",
+          "Teaser": "External Post 1 teaser",
+          "ExternalPublisherId": "3",
+          "OwnerId": "2"
+        }
+
+### Update an ExternalPost [PUT]
+
++ Request (application/json)
+
+        {
+          "Id": 1,
+          "Url": "http://www.example.com/",
+          "ImageUrl": "http://www.example.com/logo",
+          "Title": "New External Post 1 title",
+          "Teaser": "New External Post 1 teaser",
+          "ExternalPublisherId": "2",
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Url": "http://www.example.com/",
+          "ImageUrl": "http://www.example.com/logo",
+          "Title": "New External Post 1 title",
+          "Teaser": "New External Post 1 teaser",
+          "ExternalPublisherId": "2",
+          "OwnerId": "2"
+        }
+
+
+## Single ExternalPosts [/external/posts/{id}]
+Actions on single ExternalPost resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the ExternalPost on which the action is done.
+
+### Retrieve an ExternalPosts [GET]
++ Response 200 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Url": "http://www.example.com/",
+          "ImageUrl": "http://www.example.com/logo",
+          "Title": "New External Post 1 title",
+          "Teaser": "New External Post 1 teaser",
+          "ExternalPublisherId": "2",
+          "OwnerId": "2"
+        }
+
+### Delete an ExternalPost [DELETE]
++ Response 204
+
+
+## ExternalPosts by user [/external/posts/user/{id}]
+Actions on single ExternalPost resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the user whose external posts are target of the action to be done.
+
+### Retrieve an ExternalPosts [GET]
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 1,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Url": "http://www.example.com/",
+              "ImageUrl": "http://www.example.com/logo",
+              "Title": "New External Post 1 title",
+              "Teaser": "New External Post 1 teaser",
+              "ExternalPublisherId": "2",
+              "OwnerId": "1"
+            },
+            {
+              "Id": 3,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Url": "http://www.nytimes.com/article-1",
+              "ImageUrl": "http://www.nytimes.com/article-1/img",
+              "Title": "External Post 3 title",
+              "Teaser": "External Post 3 teaser",
+              "ExternalPublisherId": "6",
+              "OwnerId": "1"
+            }
+        ]
