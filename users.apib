@@ -1,0 +1,105 @@
+# Group Users
+Users of the blogging platform.
+
+A User resource has the following attributes:
+
+- id
+- created_at
+- updated_at
+- name
+- email
+- title
+- description
+- facebook_link
+- twitter_link
+- googleplus_link
+- linkedin_link
+- website_link
+
+The attributes *id*, *token*, *created_at*, and *updated_at* are set by the TrunkTrunk API.
+
+
+## Users [/users]
+Actions on the collections of Users.
+
+### Retrieve the current user[GET]
+Get the User resource of the user currently logged in.
+
++ Response 200 (application/json)
+
+        {
+          "id": 1, 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "name": "User 1",
+          "email": "user1@example.org",
+          "title": "Freelance writer", 
+          "description": "Description of User 1",
+          "facebook_link": "",
+          "twitter_link": "",
+          "googleplus_link": "",
+          "linkedin_link": "",
+          "website_link": ""
+        }
+
+
+### Update a User [PUT]
+Update the user information of the current user.
+
++ Request (application/json)
+
+        {
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "name": "Updated User 1",
+          "email": "user1@example.org",
+          "title": "Freelance writer", 
+          "description": "New description of User 1",
+          "facebook_link": "",
+          "twitter_link": "",
+          "googleplus_link": "",
+          "linkedin_link": "",
+          "website_link": "http://www.trunktrunk.com/user1"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "id": 1, 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "name": "Updated User 1",
+          "email": "user1@example.org",
+          "title": "Freelance writer", 
+          "description": "New description of User 1",
+          "facebook_link": "",
+          "twitter_link": "",
+          "googleplus_link": "",
+          "linkedin_link": "",
+          "website_link": "http://www.trunktrunk.com/user1"
+        }
+ 
+
+## Single user [/users/{id}]
+Actions on single User resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the User on which the action is done.
+
+### Retrieve a User [GET]
++ Response 200 (application/json)
+
+        {
+          "id": 1, 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "name": "User 1",
+          "email": "user1@example.org",
+          "title": "Freelance writer", 
+          "description": "Description of User 1",
+          "facebook_link": "",
+          "twitter_link": "",
+          "googleplus_link": "",
+          "linkedin_link": "",
+          "website_link": ""
+        }
