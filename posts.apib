@@ -3,14 +3,14 @@ Posts (articles) at the core of the blogging platform.
 
 A Post resource has the following attributes:
 
-- id
-- revision
-- created_at
-- updated_at
-- title
-- content
-- tags
-- published
+- Id
+- Revision
+- CreatedAt
+- UpdatedAt
+- Title
+- Content
+- Tags
+- Published
 
 The attributes *id*, *revision*, *created_at*, and *updated_at* are set by the TrunkTrunk API.
 
@@ -24,27 +24,27 @@ If the *published* attribute is set to true, the post is published. Otherwise it
 + Request (application/json)
 
         {
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }
 
 + Response 201 (application/json)
 
         {
-          "id": 1, 
-          "revision": 1, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }
 
 ### Update a Post [PUT]
@@ -55,31 +55,31 @@ The revision id must be the latest revision id. Otherwise the request is rejecte
 + Request (application/json)
 
         {
-          "id": 1, 
-          "revision": 1, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }
 
 + Response 201 (application/json)
 
         {
-          "id": 1, 
-          "revision": 2, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }
 
 
@@ -94,16 +94,16 @@ Actions on single Post resource.
 + Response 200 (application/json)
 
         {
-          "id": 1, 
-          "revision": 1, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }
 
 ### Remove a Post [DELETE]
@@ -117,27 +117,27 @@ Actions on the collection of posts owned by a single user.
 + Response 200 (application/json)
 
         [{
-          "id": 1, 
-          "revision": 3, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 3, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }, {
-          "id": 2, 
-          "revision": 2, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 2", 
-          "content": "Content of Post 2", 
-          "tags" [
+          "Id": 2, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 2", 
+          "Content": "Content of Post 2", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }]
 
 
@@ -149,26 +149,26 @@ Actions on the collection of featured posts.
 + Response 200 (application/json)
 
         [{
-          "id": 1, 
-          "revision": 3, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 1", 
-          "content": "Content of Post 1", 
-          "tags" [
+          "Id": 1, 
+          "Revision": 3, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }, {
-          "id": 2, 
-          "revision": 2, 
-          "created_at": "2014-04-14T02:15:15Z", 
-          "updated_at": "2014-04-14T02:15:15Z", 
-          "title": "Post 2", 
-          "content": "Content of Post 2", 
-          "tags" [
+          "Id": 2, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 2", 
+          "Content": "Content of Post 2", 
+          "Tags" [
             "Tag 1", "Tag 2", "Tag 3"
           ],
-          "published": "true"
+          "Published": "true"
         }]
 
