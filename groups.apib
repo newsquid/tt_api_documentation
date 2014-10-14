@@ -1,0 +1,107 @@
+# Group Groups
+Groups of collaborating users of the blogging platform.
+
+A Group resource has the following attributes:
+
+- Id
+- CreatedAt
+- UpdatedAt
+- Name
+- Description
+- OwnerId 
+
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *OwnerId* are set by the TrunkTrunk API.
+
+
+## Groups [/groups]
+Actions on the collection of all groups.
+
+### Create a Group [POST]
+
++ Request (application/json)
+
+        {
+          "Name": "Group 1 name",
+          "Description": "Group 1 description",
+          "OwnerId": "2"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Name": "Group 1 name",
+          "Description": "Group 1 description",
+          "OwnerId": "2"
+        }
+
+### Update a Group [PUT]
+
++ Request (application/json)
+
+        {
+          "Id": 1,
+          "Name": "New Group 1 name",
+          "Description": "New Group 1 description",
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Name": "New Group 1 name",
+          "Description": "New Group 1 description",
+          "OwnerId": "2"
+        }
+
+
+## Single Group [/groups/{id}]
+Actions on single Group resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Group on which the action is done.
+
+### Retrieve a Group [GET]
++ Response 200 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Name": "Group 1 name",
+          "Description": "Group 1 description",
+          "OwnerId": "2"
+        }
+
+
+## Groups by user [/groups/user/{id}]
+Actions on the groups of a single User resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the user whose groups are target of the action to be done.
+
+### Retrieve groups [GET]
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 1,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "Group 1 name",
+              "Description": "Group 1 description",
+              "OwnerId": "1"
+            },
+            {
+              "Id": 3,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "Group 3 name",
+              "Description": "Group 3 description",
+              "OwnerId": "1"
+            }
+        ]
