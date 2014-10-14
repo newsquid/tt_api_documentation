@@ -1,0 +1,74 @@
+# Group ExternalPublishers
+External publishers referenced by the users of the blogging platform.
+
+An ExternalPublisher resource has the following attributes:
+
+- Id
+- CreatedAt
+- UpdatedAt
+- Url
+- ImageUrl
+
+The attributes *Id*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+
+
+## ExternalPublishers [/external/publishers]
+Actions on the collection of all external publishers.
+
+### Get all ExternalPublishers [GET]
+
++ Response 200 (application/json)
+        
+        [
+            {
+              "Id": 1, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Url": "http://www.example.org/", 
+              "ImageUrl": "http://www.example.org/logo"
+            },
+            {
+              "Id": 2, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Url": "http://www.nytimes.com", 
+              "ImageUrl": "http://www.nytimes.com/assets/logo"
+            }
+        ]
+
+### Create an ExternalPublisher [POST]
+
++ Request (application/json)
+
+        {
+          "Url": "http://www.example.org/", 
+          "ImageUrl": "http://www.example.org/logo"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Url": "http://www.example.org/", 
+          "ImageUrl": "http://www.example.org/logo"
+        }
+
+
+## Single ExternalPublisher [/external/publishers/{id}]
+Actions on single Post resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the ExternalPublisher on which the action is done.
+
+### Retrieve an ExternalPublisher [GET]
++ Response 200 (application/json)
+
+        {
+          "Id": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Url": "http://www.example.org/", 
+          "ImageUrl": "http://www.example.org/logo"
+        }
