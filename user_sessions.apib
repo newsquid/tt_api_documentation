@@ -3,11 +3,11 @@ Handles user sessions (sign in/out).
 
 A Session resource has the following attributes:
 
-- UserId
-- CreatedAt
-- UpdatedAt
-- ExpiresAt
-- Token
+- **UserId**: (int, required) Unique identifier of the user of which the session is concerned 
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **ExpiresAt**: (datetime, required) The time of expiration of the session. After this time, the user will have to reauthenticate. 
+- **Token**: (string, required) The token used for authenticating the user 
 
 All attributes are set by the TrunkTrunk API.
 
