@@ -15,7 +15,8 @@ A Post resource has the following attributes:
 The attributes *id*, *revision*, *created_at*, and *updated_at* are set by the TrunkTrunk API.
 
 
-## Actions on the collection of posts [/posts]
+## Posts [/posts]
+Actions on the collection of all posts.
 
 ### Create a Post [POST]
 + Request (application/json)
@@ -45,9 +46,10 @@ The attributes *id*, *revision*, *created_at*, and *updated_at* are set by the T
         }
 
 
-## Actions on the collection of features posts [/posts/featured]
+## Featured posts [/posts/featured]
+Actions on the collection of featured posts.
 
-### Get all features posts [GET]
+### Retrieve all featured post [GET]
 + Response 200 (application/json)
 
         [{
@@ -74,13 +76,13 @@ The attributes *id*, *revision*, *created_at*, and *updated_at* are set by the T
           "published": "true"
         }]
 
-## Actions on single Post resources [/notes/{id}]
-A single Note object with all its details
+## Single post [/notes/{id}]
+Actions on single Post resources.
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the Post to perform action with. Has example value.
 
-### Retrieve a Note [GET]
+### Retrieve a Post [GET]
 + Response 200 (application/json)
 
         {
@@ -96,5 +98,5 @@ A single Note object with all its details
           "published": "true"
         }
 
-### Remove a Note [DELETE]
+### Remove a Post [DELETE]
 + Response 204
