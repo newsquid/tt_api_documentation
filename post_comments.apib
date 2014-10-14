@@ -1,0 +1,106 @@
+# Group PostComments
+Handles post comments (users commenting on posts).
+
+A PostComment resource has the following attributes:
+
+- Id
+- CreatedAt
+- UpdatedAt
+- UserId
+- PostId
+- Content
+
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *UserId* are set by the TrunkTrunk API.
+
+
+## -> /posts/comments [/posts/comments]
+
+### Create [POST]
+Create a new comment.
+
+Any signed in user is allowed to create a comment.
+
++ Request (application/json)
+            
+        {
+          "PostId": 1,
+          "Content": "Comment on Post 1"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1
+          "CreatedAt": "2014-04-14T02:15:15Z",
+          "UpdatedAt": "2014-04-18T02:15:15Z",
+          "UserId": 2,
+          "PostId": 1,
+          "Content": "Comment on Post 1"
+        }
+
+### Update [PUT]
+Edit an existing comment.
+
+Only the creator of a comment can edit it.
+
++ Request (application/json)
+            
+        {
+          "PostId": 1,
+          "Content": "Comment on Post 1"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1
+          "CreatedAt": "2014-04-14T02:15:15Z",
+          "UpdatedAt": "2014-04-18T02:15:15Z",
+          "UserId": 2,
+          "PostId": 1,
+          "Content": "Comment on Post 1"
+        }
+
+
+
+## -> /posts/comments/{id} [/posts/comments/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the comment.
+
+### Delete [DELETE]
+Deletes the comment with the given id.
+
+Only the creator of a comment can delete it.
+
++ Response 204
+
+
+## -> /posts/comments/post/{id} [/posts/comments/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets all comments to the post with the given id
+
++ Response 200
+
+        [
+            {
+              "Id": 1
+              "CreatedAt": "2014-04-14T02:15:15Z",
+              "UpdatedAt": "2014-04-18T02:15:15Z",
+              "UserId": 2,
+              "PostId": 1,
+              "Content": "Comment on Post 1"
+            },
+            {
+              "Id": 7
+              "CreatedAt": "2014-04-16T02:15:15Z",
+              "UpdatedAt": "2014-04-16T02:15:15Z",
+              "UserId": 7,
+              "PostId": 1,
+              "Content": "Another comment on Post 1"
+            }
+        ]

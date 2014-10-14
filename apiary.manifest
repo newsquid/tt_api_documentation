@@ -1,5 +1,6 @@
 apiary.apib
 posts.apib
+post_comments.apib
 users.apib
 user_sessions.apib
 groups.apib
