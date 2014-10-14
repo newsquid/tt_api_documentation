@@ -4,6 +4,7 @@ Users of the blogging platform.
 A User resource has the following attributes:
 
 - Id
+- NewsquidId
 - CreatedAt
 - UpdatedAt
 - Name
@@ -16,7 +17,7 @@ A User resource has the following attributes:
 - LinkedInLink
 - WebsiteLink
 
-The attributes *Id*, *Token*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+The attributes *Id*, *NewsquidId*, *Token*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
 
 ## Users [/users]
@@ -29,6 +30,7 @@ Get the User resource of the user currently logged in.
 
         {
           "Id": 1, 
+          "NewsquidId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "User 1",
@@ -66,6 +68,7 @@ Update the user information of the current user.
 
         {
           "Id": 1, 
+          "NewsquidId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "Updated User 1",
@@ -91,6 +94,7 @@ Actions on single User resource.
 
         {
           "Id": 1, 
+          "NewsquidId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "User 1",
@@ -117,6 +121,7 @@ Actions on the users members of a single Group resource.
         [
             {
               "Id": 1, 
+              "NewsquidId": 7, 
               "CreatedAt": "2014-04-14T02:15:15Z", 
               "UpdatedAt": "2014-04-14T02:15:15Z", 
               "Name": "User 1",
@@ -131,6 +136,7 @@ Actions on the users members of a single Group resource.
             },
             {
               "Id": 3, 
+              "NewsquidId": 23, 
               "CreatedAt": "2014-04-14T02:15:15Z", 
               "UpdatedAt": "2014-04-14T02:15:15Z", 
               "Name": "User 3",

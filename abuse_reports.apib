@@ -7,6 +7,7 @@ An AbuseReport resource has the following attributes:
 - CreatedAt
 - PostId
 - UserId
+- Description
 
 The attributes *Id*, *CreatedAt*, and *UserId* are set by the TrunkTrunk API.
 
@@ -20,6 +21,7 @@ Actions on the collection of all abuse reports.
 
         {
           "PostId": 8,
+          "Description": "Abuse report description"
         }
 
 + Response 201 (application/json)
@@ -28,5 +30,6 @@ Actions on the collection of all abuse reports.
           "Id": 1,
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "PostId": 8,
-          "UserId": 2
+          "UserId": 2,
+          "Description": "Abuse report description"
         }
