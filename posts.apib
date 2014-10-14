@@ -1,41 +1,100 @@
-# Group Sample
-Notes related resources of the **Notes API**
+# Group Posts
+Posts (articles) at the core of the blogging platform.
 
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
+A Post resource has the following attributes:
 
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
+- id
+- revision
+- created_at
+- updated_at
+- title
+- content
+- tags
+- published
 
-### Create a Note [POST]
+The attributes *id*, *revision*, *created_at*, and *updated_at* are set by the TrunkTrunk API.
+
+
+## Actions on the collection of posts [/posts]
+
+### Create a Post [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        {
+          "title": "Post 1", 
+          "content": "Content of Post 1", 
+          "tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "published": "true"
+        }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        {
+          "id": 1, 
+          "revision": "1", 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "title": "Post 1", 
+          "content": "Content of Post 1", 
+          "tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "published": "true"
+        }
 
-## Note [/notes/{id}]
+
+## Actions on the collection of features posts [/posts/featured]
+
+### Get all features posts [GET]
++ Response 200 (application/json)
+
+        [{
+          "id": 1, 
+          "revision": "3", 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "title": "Post 1", 
+          "content": "Content of Post 1", 
+          "tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "published": "true"
+        }, {
+          "id": 2, 
+          "revision": "2", 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "title": "Post 2", 
+          "content": "Content of Post 2", 
+          "tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "published": "true"
+        }]
+
+## Actions on single Post resources [/notes/{id}]
 A single Note object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + id (required, number, `1`) ... Numeric `id` of the Post to perform action with. Has example value.
 
 ### Retrieve a Note [GET]
 + Response 200 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        {
+          "id": 1, 
+          "revision": "1", 
+          "created_at": "2014-04-14T02:15:15Z", 
+          "updated_at": "2014-04-14T02:15:15Z", 
+          "title": "Post 1", 
+          "content": "Content of Post 1", 
+          "tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "published": "true"
+        }
 
 ### Remove a Note [DELETE]
 + Response 204
