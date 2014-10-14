@@ -1,0 +1,34 @@
+# Group UserSessions
+Handles user sessions (sign in/out).
+
+A Session resource has the following attributes:
+
+- UserId
+- CreatedAt
+- UpdatedAt
+- ExpiresAt
+- Token
+
+All attributes are set by the TrunkTrunk API.
+
+
+## /users/sessions [/users/sessions]
+
+### Create [POST]
+Create a new user session. No request payload is expected. Instead, a valid
+NEWSQUID token is expected to be sent over basic authentication.
+
++ Request (multipart/form-data; boundary=---BOUNDARY)
+    + Headers
+            
+            Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ
+
++ Response 201 (application/json)
+
+        {
+          "UserId": 2,
+          "CreatedAt": "2014-04-14T02:15:15Z",
+          "UpdatedAt": "2014-04-18T02:15:15Z",
+          "ExpiresAt": "2014-04-18T03:15:15Z",
+          "Token": "QWxhZGRpbjpvcGVuIHNlc2FtZQ",
+        }
