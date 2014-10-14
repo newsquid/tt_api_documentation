@@ -1,0 +1,32 @@
+# Group AbuseReports
+Abuse reports targeted posts (articles).
+
+An AbuseReport resource has the following attributes:
+
+- Id
+- CreatedAt
+- PostId
+- UserId
+
+The attributes *Id*, *CreatedAt*, and *UserId* are set by the TrunkTrunk API.
+
+
+## AbuseReports [/groups]
+Actions on the collection of all abuse reports.
+
+### Create an AbuseReport [POST]
+
++ Request (application/json)
+
+        {
+          "PostId": 8,
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "PostId": 8,
+          "UserId": 2
+        }
