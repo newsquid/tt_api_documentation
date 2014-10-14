@@ -3,20 +3,22 @@ Groups of collaborating users of the blogging platform.
 
 A Group resource has the following attributes:
 
-- Id
-- CreatedAt
-- UpdatedAt
-- Name
-- Description
-- OwnerId 
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **Name**: (string, required) The name of the group 
+- **Description**: (string, optional) A description of the group 
+- **OwnerId **: (int, required) Identifier of the user who created the group and therefore owns it 
 
 The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *OwnerId* are set by the TrunkTrunk API.
 
 
-## Groups [/groups]
-Actions on the collection of all groups.
+## -> /groups [/groups]
 
-### Create a Group [POST]
+### Create [POST]
+Create a new group.
+
+Any signed in user can create a group.
 
 + Request (application/json)
 
@@ -37,7 +39,10 @@ Actions on the collection of all groups.
           "OwnerId": "2"
         }
 
-### Update a Group [PUT]
+### Update [PUT]
+Update a group.
+
+Any member of the group can update it.
 
 + Request (application/json)
 
@@ -59,13 +64,16 @@ Actions on the collection of all groups.
         }
 
 
-## Single Group [/groups/{id}]
-Actions on single Group resource.
+## -> /groups/{id} [/groups/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Group on which the action is done.
+    + id (required, number, `1`) ... Id of the group.
 
-### Retrieve a Group [GET]
+### Get [GET]
+Get the group with the given id.
+
+Any user can do this request. The caller does not have to be signed in.
+
 + Response 200 (application/json)
 
         {
@@ -78,13 +86,16 @@ Actions on single Group resource.
         }
 
 
-## Groups by user [/groups/user/{id}]
-Actions on the groups of a single User resource.
+## -> /groups/user/{id} [/groups/user/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the user whose groups are target of the action to be done.
+    + id (required, number, `1`) ... Id of the user.
 
-### Retrieve groups [GET]
+### Get [GET]
+Get a list of the groups where the user with the given id is member.
+
+Any user can do this request. The caller does not have to be signed in.
+
 + Response 200 (application/json)
 
         [
