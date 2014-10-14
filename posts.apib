@@ -113,7 +113,44 @@ Actions on single Post resource.
 ## Posts by user [/posts/user/{id}]
 Actions on the collection of posts owned by a single user.
 
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the owner of the posts on which the action is done.
+
 ### Retrieve all posts by user [GET]
++ Response 200 (application/json)
+
+        [{
+          "Id": 1, 
+          "Revision": 3, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "Published": "true"
+        }, {
+          "Id": 2, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 2", 
+          "Content": "Content of Post 2", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "Published": "true"
+        }]
+
+
+## Posts by group [/posts/group/{id}]
+Actions on the collection of posts in a single group.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the group to which the posts on which the action is done belong.
+
+### Retrieve all posts by group [GET]
 + Response 200 (application/json)
 
         [{
