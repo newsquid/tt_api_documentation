@@ -1,0 +1,68 @@
+# Group GroupMemberships 
+The connection between groups and users and vice versa.
+
+A GroupMembership resource has the following attributes:
+
+- Id
+- CreatedAt
+- UpdatedAt
+- Role
+- GroupId
+- UserId 
+
+The attributes *Id*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+
+
+## GroupMemberships [/group_memberships]
+Actions on the collection of all group memberships.
+
+### Create a GroupMembership [POST]
+
++ Request (application/json)
+
+        {
+          "Role": "Editor",
+          "GroupId": 7,
+          "UserId": 3
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 4,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Role": "Editor",
+          "GroupId": 7,
+          "UserId": 3
+        }
+
+### Update a GroupMembership [PATCH]
+
++ Request (application/json)
+
+        {
+          "Id": 4,
+          "Role": "Reviewer"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 4,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-23T06:06:15Z", 
+          "Role": "Reviewer",
+          "GroupId": 7,
+          "UserId": 3
+        }
+
+
+## Single GroupMembership [/group_memberships/{id}]
+Actions on single GroupMembership resource.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the GroupMembership on which the action is done.
+
+### Delete a GroupMembership [DELETE]
++ Response 204
