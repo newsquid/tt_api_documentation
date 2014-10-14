@@ -3,26 +3,30 @@ Posts (articles) at the core of the blogging platform.
 
 A Post resource has the following attributes:
 
-- Id
-- Revision
-- CreatedAt
-- UpdatedAt
-- Title
-- Content
-- Tags
-- ImageCaption
-- Price
-- NewsquidProductId
-- PublishedRevision
+- **Id**: (int, required) Unique identifier
+- **Revision**: (int, required) Revision number unique for the post id
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **Title**: (string, required) The post title
+- **Content**: (string, required) The post content (the text of the article)
+- **Tags**: (list of strings, required) List of unique post tags (strings) describing the post
+- **ImageCaption**: (string, optional) The caption of the post image
+- **Price**: (decimal, required) The price of the post. If set to 0.0, the post is free.
+- **NewsquidProductId**: (int, optional) The integer of the product in NEWSQUID corresponding to the post, if such a product exists.
+- **PublishedRevision**: (int, optional) The revision number of the post revision currently published. I set to 0, the post is not published.
+- **GroupId**: (int, optional) The id of the group to which the post belong. If set to 0, the post is considered part of no group.
 
 The attributes *Id*, *Revision*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
 
-## Posts [/posts]
-Actions on the collection of all posts.
+## -> /posts [/posts]
 
-### Create a Post [POST]
-If the *published* attribute is set to true, the post is published. Otherwise it is saved as a draft.
+### Create [POST]
+Create a new post. The post is published immediately, if the
+*PublishedRevision* attribute is set to 1. If this is not desired, the
+*PublishedRevision* attribute must be set to 0.
+
+Any signed in user can create a post.
 
 + Request (application/json)
 
@@ -34,7 +38,8 @@ If the *published* attribute is set to true, the post is published. Otherwise it
           ]
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
-          "NewsquidProductId": 0
+          "NewsquidProductId": 0,
+          "GroupId": 0
         }
 
 + Response 201 (application/json)
@@ -52,11 +57,16 @@ If the *published* attribute is set to true, the post is published. Otherwise it
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 0
+          "PublishedRevision": 0,
+          "GroupId": 0
         }
 
-### Update a Post [PUT]
-The revision id must be the latest revision id. Otherwise the request is rejected.
+### Update [PUT]
+Update a post. If the *PublishedRevision* attribute is set to the current
+revision number + 1, the changes are published immediately. If working on a
+draft, the *PublishedRevision* attribute must remain unchanged.
+
+Only the creator of the post or any user in the group to which the post belongs can update a post.
 
 + Request (application/json)
 
@@ -73,7 +83,8 @@ The revision id must be the latest revision id. Otherwise the request is rejecte
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 0
         }
 
 + Response 201 (application/json)
@@ -91,18 +102,22 @@ The revision id must be the latest revision id. Otherwise the request is rejecte
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 0
         }
 
 
 
-## Single post [/posts/{id}]
-Actions on single Post resource.
+## -> /posts/{id} [/posts/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Post on which the action is done.
+    + id (required, number, `1`) ... Id of the Post.
 
-### Retrieve a Post [GET]
+### Get [GET]
+Get the latest published version of the post with the given id.
+
+Anyone can get a post by its id. It does not require that the caller is signed in.
+
 + Response 200 (application/json)
 
         {
@@ -118,20 +133,28 @@ Actions on single Post resource.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 1
+          "PublishedRevision": 1,
+          "GroupId": 0
         }
 
-### Remove a Post [DELETE]
+### Delete [DELETE]
+Delete the post with the given id.
+
+Only the creator of the post or any user in the group to which the post belongs can delete a post.
+
 + Response 204
 
 
-## Single post as a draft [/posts/{id}/draft]
-Actions on the newest draft of single Post resource.
+## -> /posts/{id}/draft [/posts/{id}/draft]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Post on which the action is done.
+    + id (required, number, `1`) ... Id of the Post.
 
-### Retrieve a Post [GET]
+### Get [GET]
+Get the latest draft of the post with the given id.
+
+Only the creator of the post or any user in the group to which the post belongs can get the latest draft of a post.
+
 + Response 200 (application/json)
 
         {
@@ -147,17 +170,21 @@ Actions on the newest draft of single Post resource.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 0
         }
 
 
-## Posts by user [/posts/user/{id}]
-Actions on the collection of posts owned by a single user.
+##  -> /posts/user/{id} [/posts/user/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the owner of the posts on which the action is done.
+    + id (required, number, `1`) ... Id of the user.
 
-### Retrieve all posts by user [GET]
+### Get [GET]
+Get all published posts of the user with the given id.
+
+Anyone get do this request. It does not require that the caller is signed in.
+
 + Response 200 (application/json)
 
         [{
@@ -173,7 +200,8 @@ Actions on the collection of posts owned by a single user.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3
+          "PublishedRevision": 3,
+          "GroupId": 2
         }, {
           "Id": 2, 
           "Revision": 2, 
@@ -187,17 +215,21 @@ Actions on the collection of posts owned by a single user.
           "ImageCaption": "Image caption of Post 2",
           "Price:": 1.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 7
         }]
 
 
-## Posts by group [/posts/group/{id}]
-Actions on the collection of posts in a single group.
+## -> /posts/group/{id} [/posts/group/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the group to which the posts on which the action is done belong.
+    + id (required, number, `1`) ... Id of the group.
 
-### Retrieve all posts by group [GET]
+### Get [GET]
+Get all published posts of the group with the given id.
+
+Anyone get do this request. It does not require that the caller is signed in.
+
 + Response 200 (application/json)
 
         [{
@@ -213,7 +245,8 @@ Actions on the collection of posts in a single group.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3
+          "PublishedRevision": 3,
+          "GroupId": 0
         }, {
           "Id": 2, 
           "Revision": 2, 
@@ -227,15 +260,19 @@ Actions on the collection of posts in a single group.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 2.2,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 4
         }]
 
 
 
-## Featured posts [/posts/featured]
-Actions on the collection of featured posts.
+## -> /posts/featured [/posts/featured]
 
-### Retrieve all featured post [GET]
+### Get [GET]
+Get all featured posts (the posts that appear on the front page of TrunkTrunk).
+
+Anyone get do this request. It does not require that the caller is signed in.
+
 + Response 200 (application/json)
 
         [{
@@ -251,7 +288,8 @@ Actions on the collection of featured posts.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3
+          "PublishedRevision": 3,
+          "GroupId": 0
         }, {
           "Id": 2, 
           "Revision": 2, 
@@ -265,16 +303,19 @@ Actions on the collection of featured posts.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 3.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 0
         }]
 
-## Search [/posts{?search}]
-Retrieve all posts matching the given search parameter.
+
+## -> /posts{?search} [/posts{?search}]
 
 + Parameters
     + search (required, string) ... Search string. The terms with which to search.
 
 ### Search for posts [GET]
+Retrieve all published posts matching the given search parameter (fuzzy search).
+
 + Response 200 (application/json)
 
         [{
@@ -290,7 +331,8 @@ Retrieve all posts matching the given search parameter.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3
+          "PublishedRevision": 3,
+          "GroupId": 3
         }, {
           "Id": 2, 
           "Revision": 2, 
@@ -304,5 +346,6 @@ Retrieve all posts matching the given search parameter.
           "ImageCaption": "Image caption of Post 2",
           "Price:": 0.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2
+          "PublishedRevision": 2,
+          "GroupId": 0
         }]
