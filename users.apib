@@ -3,28 +3,29 @@ Users of the blogging platform.
 
 A User resource has the following attributes:
 
-- Id
-- NewsquidId
-- CreatedAt
-- UpdatedAt
-- Name
-- Email
-- Title
-- Description
-- FacebookLink
-- TwitterLink
-- GooglePlusLink
-- LinkedInLink
-- WebsiteLink
+- **Id**: (int, required) Unique identifier of the resource
+- **NewsquidId**: (int, required) The unique identifier of the user resource in NEWSQUID corresponding to the user resource
+- **CreatedAt**: (datetime, required) The time of creation of the resource 
+- **UpdatedAt**: (datetime, required) The time of last update of the resource 
+- **Name**: (string, required) The name of the user 
+- **Email**: (string, required) The email of the user 
+- **Title**: (string, optional) The title of the user (such as 'Freelance writer' or 'Spare time publisher') 
+- **Description**: (string, optional) A description of the user 
+- **FacebookLink**: (string, optional) A link to the Facebook page of the user 
+- **TwitterLink**: (string, optional) A link to the Twitter page of the user
+- **GooglePlusLink**:(string, optional) A link to the Google+ page of the user
+- **LinkedInLink**: (string, optional) A link to the LinkedIn page of the user
+- **WebsiteLink**: (string, optional) A link to the personal website/blog of the user
 
 The attributes *Id*, *NewsquidId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
 
-## Users [/users]
-Actions on the collections of Users.
+## -> /users [/users]
 
-### Retrieve the current user[GET]
-Get the User resource of the user currently logged in.
+### Get [GET]
+Get the user currently logged in.
+
+Any signed in user can do this request.
 
 + Response 200 (application/json)
 
@@ -45,8 +46,10 @@ Get the User resource of the user currently logged in.
         }
 
 
-### Update a User [PUT]
+### Update [PUT]
 Update the user information of the current user.
+
+Any signed in user can do this request.
 
 + Request (application/json)
 
@@ -83,13 +86,16 @@ Update the user information of the current user.
         }
  
 
-## Single user [/users/{id}]
-Actions on single User resource.
+## -> /users/{id} [/users/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the User on which the action is done.
+    + id (required, number, `1`) ... Id of the user.
 
-### Retrieve a User [GET]
+### Get [GET]
+Get the user with the given id.
+
+Anyone can do this request. The caller does not need to be signed in.
+
 + Response 200 (application/json)
 
         {
@@ -109,13 +115,16 @@ Actions on single User resource.
         }
 
 
-## Users by group [/users/group/{id}]
-Actions on the users members of a single Group resource.
+## -> /users/group/{id} [/users/group/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the group whose members (users) are target of the action to be done.
+    + id (required, number, `1`) ... Id of the group.
 
 ### Retrieve groups [GET]
+Get all users of the group with the given id.
+
+Anyone can do this request. The caller does not need to be signed in.
+
 + Response 200 (application/json)
 
         [
