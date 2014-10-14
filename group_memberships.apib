@@ -3,20 +3,26 @@ The connection between groups and users and vice versa.
 
 A GroupMembership resource has the following attributes:
 
-- Id
-- CreatedAt
-- UpdatedAt
-- GroupId
-- UserId 
-- Status
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **GroupId**: (int, required) Identifier of the group to which the membership applies
+- **UserId**: (int, required) Identifier of the user to which the membership applies
+- **Status**: (string, required) The status of the membership. When a 
+membership is first created, the status is "pending". When a membership is
+accepted, the status changes to "active". 
 
 The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *Status* are set by the TrunkTrunk API.
 
 
-## GroupMemberships [/groups/memberships]
-Actions on the collection of all group memberships.
+## -> /groups/memberships [/groups/memberships]
 
-### Create a GroupMembership [POST]
+### Create [POST]
+Create a new group membership. The creation results in the creation of a new
+GroupMembership ship resource with the status "pending" as well as in an
+invitation email to the user invited to join the group.
+
+Any member of a group can invite other users to join it.
 
 + Request (application/json)
 
@@ -36,7 +42,11 @@ Actions on the collection of all group memberships.
           "Status": "Pending"
         }
 
-### Update a GroupMembership [PATCH]
+### Update [PATCH]
+Accept the group membership. This results in the status of the resource
+changing from "pending" to "active". 
+
+Only the user to which to group membership applies can update it.
 
 + Request (application/json)
 
@@ -56,11 +66,14 @@ Actions on the collection of all group memberships.
         }
 
 
-## Single GroupMembership [/groups/memberships/{id}]
-Actions on single GroupMembership resource.
+## -> /groups/memberships/{id} [/groups/memberships/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the GroupMembership on which the action is done.
+    + id (required, number, `1`) ... Id of the GroupMembership.
 
 ### Delete a GroupMembership [DELETE]
+Delete the GroupMembership with the given id. This corresponds to leaving a group.
+
+Only the user to which to group membership applies can delete it.
+
 + Response 204
