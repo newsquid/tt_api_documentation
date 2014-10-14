@@ -1,0 +1,39 @@
+# Group PostAbuseReports
+Abuse reports targeted posts (articles). If a user believes a post contains
+inappropriate content, the user can report abuse.
+
+An AbuseReport resource has the following attributes:
+
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **PostId**: (int, required) The identifier of the post to which the abuse report applies 
+- **UserId**: (int, required) The identifier of the user who reported the abuse 
+- **Message**: (string, required) A message explaining how the user believes the post contains inappropriate content
+
+The attributes *Id*, *CreatedAt*, and *UserId* are set by the TrunkTrunk API.
+
+
+## -> /posts/abuse_reports [/posts/abuse_reports]
+
+### Create [POST]
+Create a new abuse report for a post.
+
+Any signed in user is allowed to create an abuse report. A user can only report
+abuse on a post a single time.
+
++ Request (application/json)
+
+        {
+          "PostId": 8,
+          "Message": "Abuse report description"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "PostId": 8,
+          "UserId": 2,
+          "Message": "Abuse report description"
+        }
