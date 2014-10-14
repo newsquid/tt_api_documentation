@@ -1,21 +1,24 @@
 # Group ExternalPublishers
-External publishers referenced by the users of the blogging platform.
+External publishers referenced by the users of the blogging platform. This can
+be publishers such as New York times or The Wall Street Journal.
 
 An ExternalPublisher resource has the following attributes:
 
-- Id
-- CreatedAt
-- UpdatedAt
-- Url
-- ImageUrl
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **Url**: (string, required) URL to the website of the external publisher
+- **ImageUrl**: (string, optional) URL to the logo of the external publisher
 
 The attributes *Id*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
 
-## ExternalPublishers [/external/publishers]
-Actions on the collection of all external publishers.
+## -> /external/publishers [/external/publishers]
 
-### Get all ExternalPublishers [GET]
+### Get [GET]
+Get a list of all external publishers.
+
+Any user can do this request. The caller does not need to be signed in.
 
 + Response 200 (application/json)
         
@@ -36,7 +39,10 @@ Actions on the collection of all external publishers.
             }
         ]
 
-### Create an ExternalPublisher [POST]
+### Create [POST]
+Create a new external publisher.
+
+Any signed in user is allowed to do this request.
 
 + Request (application/json)
 
@@ -56,13 +62,16 @@ Actions on the collection of all external publishers.
         }
 
 
-## Single ExternalPublisher [/external/publishers/{id}]
-Actions on single ExternalPublisher resource.
+## -> /external/publishers/{id} [/external/publishers/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the ExternalPublisher on which the action is done.
+    + id (required, number, `1`) ... Id of the ExternalPublisher.
 
-### Retrieve an ExternalPublisher [GET]
+### Get [GET]
+Get the external publisher with the given id.
+
+Any user can do this request. The caller does not need to be signed in.
+
 + Response 200 (application/json)
 
         {
