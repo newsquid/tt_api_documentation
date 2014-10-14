@@ -1,21 +1,21 @@
 # Group Files
-File uploads
+File uploads. Provides a way of getting public accessible URLs to files.
 
 A File resource has the following attributes:
 
-- Id
-- CreatedAt
-- ContentType
-- Url
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **ContentType**: (string, required) The content type of the file 
+- **Url**: (string, required) The public URL of the file 
 
 All attributes are set by the TrunkTrunk API.
 
 
-## Files [/files]
+## -> /files [/files]
 
-### Upload a file [POST]
+### Create [POST]
 Upload a file as multipart/form-data and retrieve File resource describing the
-file. The File resource includes a public url to the file, which can be used
+file. The File resource includes a public URL to the file, which can be used
 in other resources where such an url is needed.
 
 + Request (multipart/form-data; boundary=---BOUNDARY)
