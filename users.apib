@@ -119,6 +119,8 @@ Anyone can do this request. The caller does not need to be signed in.
 
 + Parameters
     + id (required, number, `1`) ... Id of the group.
+    + items_per_page (required, number, `1`) ... How many users to return per request.
+    + page (required, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all users of the group with the given id.

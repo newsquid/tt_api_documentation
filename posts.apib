@@ -4,6 +4,7 @@ Posts (articles).
 A Post resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
+- **OwnerId**: (int, required) Id of the user who owns/created the posts.
 - **Revision**: (int, required) Revision number unique for the post id
 - **CreatedAt**: (datetime, required) The time of creation of the resource
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
@@ -16,7 +17,7 @@ A Post resource has the following attributes:
 - **PublishedRevision**: (int, optional) The revision number of the post revision currently published. I set to 0, the post is not published.
 - **GroupId**: (int, optional) The id of the group to which the post belong. If set to 0, the post is considered part of no group.
 
-The attributes *Id*, *Revision*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+The attributes *Id*, *Revision*, *CreatedAt*, and *UpdatedAt*, *OwnerId* are set by the TrunkTrunk API.
 
 
 ## -> /posts [/posts]
@@ -179,6 +180,8 @@ Only the creator of the post or any user in the group to which the post belongs 
 
 + Parameters
     + id (required, number, `1`) ... Id of the user.
+    + items_per_page (required, number, `1`) ... How many posts to return per request.
+    + page (required, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all published posts of the user with the given id.
@@ -224,6 +227,8 @@ Anyone get do this request. It does not require that the caller is signed in.
 
 + Parameters
     + id (required, number, `1`) ... Id of the group.
+    + items_per_page (required, number, `1`) ... How many posts to return per request.
+    + page (required, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all published posts of the group with the given id.
@@ -312,6 +317,8 @@ Anyone get do this request. It does not require that the caller is signed in.
 
 + Parameters
     + search (required, string) ... Search string. The terms with which to search.
+    + items_per_page (required, number, `1`) ... How many posts to return per request.
+    + page (required, number, `1`) ... How many *items_per_page* to skip.
 
 ### Search for posts [GET]
 Retrieve all published posts matching the given search parameter (fuzzy
