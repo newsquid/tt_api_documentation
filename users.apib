@@ -20,7 +20,7 @@ A User resource has the following attributes:
 The attributes *Id*, *NewsquidId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
 
-## -> /users [/users]
+## -> /user [/user]
 
 ### Get [GET]
 Get the user currently logged in.
@@ -84,7 +84,32 @@ Any signed in user can do this request.
           "LinkedInLink": "",
           "WebsiteLink": "http://www.trunktrunk.com/user1"
         }
- 
+
+### Search [GET]
+Get a list of users, based on a search on their name and email
+
+Anyone can do this request. The caller does not need to be signed in.
+
++ Response 200 (application/json)
+
+        [{
+          "Id": 1, 
+          "NewsquidId": 7, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Name": "User 1",
+          "Email": "user1@example.org",
+          "Title": "Freelance writer", 
+          "Description": "Description of User 1",
+          "FacebookLink": "",
+          "TwitterLink": "",
+          "GooglePlusLink": "",
+          "LinkedInLink": "",
+          "WebsiteLink": ""
+        }]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the user.
 
 ## -> /users/{id} [/users/{id}]
 
