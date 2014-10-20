@@ -92,24 +92,40 @@ Anyone can do this request. The caller does not need to be signed in.
 
 + Response 200 (application/json)
 
-        [{
-          "Id": 1, 
-          "NewsquidId": 7, 
-          "CreatedAt": "2014-04-14T02:15:15Z", 
-          "UpdatedAt": "2014-04-14T02:15:15Z", 
-          "Name": "User 1",
-          "Email": "user1@example.org",
-          "Title": "Freelance writer", 
-          "Description": "Description of User 1",
-          "FacebookLink": "",
-          "TwitterLink": "",
-          "GooglePlusLink": "",
-          "LinkedInLink": "",
-          "WebsiteLink": ""
-        }]
+        [
+          {
+            "Id": 1, 
+            "NewsquidId": 7, 
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "Name": "Lars",
+            "Email": "user1@example.org",
+            "Title": "Freelance writer", 
+            "Description": "Description of User 1",
+            "FacebookLink": "",
+            "TwitterLink": "",
+            "GooglePlusLink": "",
+            "LinkedInLink": "",
+            "WebsiteLink": ""
+          },
+            "Id": 1, 
+            "NewsquidId": 8, 
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "Name": "User 2",
+            "Email": "LarsMan@example.org",
+            "Title": "Freelance writer", 
+            "Description": "Description of User 2",
+            "FacebookLink": "",
+            "TwitterLink": "",
+            "GooglePlusLink": "",
+            "LinkedInLink": "",
+            "WebsiteLink": ""
+          }
+        ]
 
 + Parameters
-    + id (required, number, `1`) ... Id of the user.
+    + term (required, string, "lars") ... Search term to matched against email and/or name of users.
 
 ## -> /users/{id} [/users/{id}]
 
