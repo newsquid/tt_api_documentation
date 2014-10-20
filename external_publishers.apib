@@ -5,6 +5,7 @@ be publishers such as New York times or The Wall Street Journal.
 An ExternalPublisher resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
+- **CreatorId**: (int, required) The id of the user who registered the publisher
 - **CreatedAt**: (datetime, required) The time of creation of the resource
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
 - **Url**: (string, required) URL to the website of the external publisher
@@ -47,6 +48,7 @@ Any signed in user is allowed to do this request.
 + Request (application/json)
 
         {
+          "CreatorId": 1
           "Url": "http://www.example.org/", 
           "ImageUrl": "http://www.example.org/logo"
         }
