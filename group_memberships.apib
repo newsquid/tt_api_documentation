@@ -24,7 +24,7 @@ The attributes *Id*, *CreatedAt*, *UpdatedAt*, *Token*, and *Status* are set by 
 Create a new group membership. The creation results in the creation of a new
 GroupMembership ship resource with the status "pending" as well as in an
 invitation email to the user invited to join the group.
-An invitation must contain *either* an **InviteeId** *or* an **InviteeEmail**, never not both.
+An invitation must contain *either* an **InviteeId** *or* an **InviteeEmail**, never both, as the presence of **InviteeEmail** will indicate that the user does not exist on trunktrunk, and should be invited by email.
 
 Any member of a group can invite other users to join it.
 
