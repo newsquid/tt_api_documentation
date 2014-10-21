@@ -16,12 +16,12 @@ All attributes are set by the TrunkTrunk API.
 
 ### Create [POST]
 Create a new user session. No request payload is expected. Instead, a valid
-NEWSQUID token is expected to be sent over basic authentication.
+NEWSQUID token is expected to be sent in the *Authorization* HTTP header.
 
 + Request (application/json)
     + Headers
             
-            Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ
+            Authorization: QWxhZGRpbjpvcGVuIHNlc2FtZQ
 
 + Response 201 (application/json)
 
