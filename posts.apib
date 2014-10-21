@@ -5,7 +5,6 @@ A Post resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
 - **OwnerId**: (int, required) Id of the user who owns/created the posts.
-- **Revision**: (int, required) Revision number unique for the post id
 - **CreatedAt**: (datetime, required) The time of creation of the resource
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
 - **Title**: (string, required) The post title
@@ -14,10 +13,11 @@ A Post resource has the following attributes:
 - **ImageCaption**: (string, optional) The caption of the post image
 - **Price**: (decimal, required) The price of the post. If set to 0.0, the post is free.
 - **NewsquidProductId**: (int, optional) The integer of the product in NEWSQUID corresponding to the post, if such a product exists.
-- **PublishedRevision**: (int, optional) The revision number of the post revision currently published. I 0, the post is not published.
+- **DraftRevisionId**: (int, required) The revision number of the newest post revision.
+- **PublishedRevisionId**: (int, optional) The revision number of the post revision currently published. I 0, the post is not published.
 - **GroupId**: (int, optional) The id of the group to which the post belong. If set to 0, the post is considered part of no group.
 
-The attributes *Id*, *Revision*, *CreatedAt*, *UpdatedAt*, *OwnerId*, and *PublishedRevision* are set by the TrunkTrunk API.
+The attributes *Id*, *Revision*, *CreatedAt*, *UpdatedAt*, *OwnerId*, *DraftRevisionId*, and *PublishedRevisionId* are set by the TrunkTrunk API.
 
 
 ## -> /posts [/posts]
@@ -45,7 +45,6 @@ Any signed in user can create a post.
 
         {
           "Id": 1, 
-          "Revision": 1, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -56,7 +55,8 @@ Any signed in user can create a post.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 0,
+          "DraftRevisionId": 1, 
+          "PublishedRevisionId": 0,
           "GroupId": 0
         }
 
@@ -71,7 +71,6 @@ Only the creator of the post or any user in the group to which the post belongs 
 
         {
           "Id": 1, 
-          "Revision": 1, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -82,7 +81,8 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 1,
+          "DraftRevisionId": 1, 
+          "PublishedRevisionId": 1,
           "GroupId": 0
         }
 
@@ -90,7 +90,6 @@ Only the creator of the post or any user in the group to which the post belongs 
 
         {
           "Id": 1, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -101,7 +100,8 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 1,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 1,
           "GroupId": 0
         }
 
@@ -118,7 +118,6 @@ Only the creator of the post or any user in the group to which the post belongs 
 
         {
           "Id": 1, 
-          "Revision": 1, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -129,7 +128,8 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 1,
+          "DraftRevisionId": 1, 
+          "PublishedRevisionId": 1,
           "GroupId": 0
         }
 
@@ -137,7 +137,6 @@ Only the creator of the post or any user in the group to which the post belongs 
 
         {
           "Id": 1, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -148,7 +147,8 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 2,
           "GroupId": 0
         }
 
@@ -167,7 +167,6 @@ Anyone can get a post by its id. It does not require that the caller is signed i
 
         {
           "Id": 1, 
-          "Revision": 1, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -178,7 +177,8 @@ Anyone can get a post by its id. It does not require that the caller is signed i
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 1,
+          "DraftRevisionId": 1, 
+          "PublishedRevisionId": 1,
           "GroupId": 0
         }
 
@@ -204,7 +204,6 @@ Only the creator of the post or any user in the group to which the post belongs 
 
         {
           "Id": 1, 
-          "Revision": 5, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -215,7 +214,8 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 5, 
+          "PublishedRevisionId": 2,
           "GroupId": 0
         }
 
@@ -236,7 +236,6 @@ Anyone get do this request. It does not require that the caller is signed in.
 
         [{
           "Id": 1, 
-          "Revision": 3, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -247,11 +246,11 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3,
+          "DraftRevisionId": 3, 
+          "PublishedRevisionId": 3,
           "GroupId": 2
         }, {
           "Id": 2, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 2", 
@@ -262,7 +261,8 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 2",
           "Price:": 1.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 2,
           "GroupId": 7
         }]
 
@@ -283,7 +283,6 @@ Anyone get do this request. It does not require that the caller is signed in.
 
         [{
           "Id": 1, 
-          "Revision": 3, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -294,11 +293,11 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3,
+          "DraftRevisionId": 3, 
+          "PublishedRevisionId": 3,
           "GroupId": 0
         }, {
           "Id": 2, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 2", 
@@ -309,7 +308,8 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 2.2,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 2,
           "GroupId": 4
         }]
 
@@ -326,7 +326,6 @@ Anyone get do this request. It does not require that the caller is signed in.
 
         [{
           "Id": 1, 
-          "Revision": 3, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -337,11 +336,11 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3,
+          "DraftRevisionId": 3, 
+          "PublishedRevisionId": 3,
           "GroupId": 0
         }, {
           "Id": 2, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 2", 
@@ -352,7 +351,8 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageCaption": "Image caption of Post 1",
           "Price:": 3.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 2,
           "GroupId": 0
         }]
 
@@ -372,7 +372,6 @@ search).
 
         [{
           "Id": 1, 
-          "Revision": 3, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 1", 
@@ -383,11 +382,11 @@ search).
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 3,
+          "DraftRevisionId": 3, 
+          "PublishedRevisionId": 3,
           "GroupId": 3
         }, {
           "Id": 2, 
-          "Revision": 2, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Title": "Post 2", 
@@ -398,6 +397,7 @@ search).
           "ImageCaption": "Image caption of Post 2",
           "Price:": 0.1,
           "NewsquidProductId": 7,
-          "PublishedRevision": 2,
+          "DraftRevisionId": 2, 
+          "PublishedRevisionId": 2,
           "GroupId": 0
         }]
