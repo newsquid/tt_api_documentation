@@ -19,8 +19,52 @@ A User resource has the following attributes:
 
 The attributes *Id*, *NewsquidUserId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
+## -> /users{?search} [/users{?search}]
 
-## -> /user [/user]
++ Parameters
+    + search (required, string, "lars") ... Search term to matched against email and/or name of users.
+
+### Search [GET]
+Get a list of users, based on a search on their name and email
+
+Anyone can do this request. The caller does not need to be signed in.
+
++ Response 200 (application/json)
+
+        [
+          {
+            "Id": 1, 
+            "NewsquidUserId": 7, 
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "Name": "Lars",
+            "Email": "user1@example.org",
+            "Title": "Freelance writer", 
+            "Description": "Description of User 1",
+            "FacebookLink": "",
+            "TwitterLink": "",
+            "GooglePlusLink": "",
+            "LinkedInLink": "",
+            "WebsiteLink": ""
+          },
+            "Id": 1, 
+            "NewsquidUserId": 8, 
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "Name": "User 2",
+            "Email": "LarsMan@example.org",
+            "Title": "Freelance writer", 
+            "Description": "Description of User 2",
+            "FacebookLink": "",
+            "TwitterLink": "",
+            "GooglePlusLink": "",
+            "LinkedInLink": "",
+            "WebsiteLink": ""
+          }
+        ]
+
+
+## -> /users/current [/users/current]
 
 ### Get [GET]
 Get the user currently logged in.
@@ -85,47 +129,6 @@ Any signed in user can do this request.
           "WebsiteLink": "http://www.trunktrunk.com/user1"
         }
 
-### Search [GET]
-Get a list of users, based on a search on their name and email
-
-Anyone can do this request. The caller does not need to be signed in.
-
-+ Response 200 (application/json)
-
-        [
-          {
-            "Id": 1, 
-            "NewsquidUserId": 7, 
-            "CreatedAt": "2014-04-14T02:15:15Z", 
-            "UpdatedAt": "2014-04-14T02:15:15Z", 
-            "Name": "Lars",
-            "Email": "user1@example.org",
-            "Title": "Freelance writer", 
-            "Description": "Description of User 1",
-            "FacebookLink": "",
-            "TwitterLink": "",
-            "GooglePlusLink": "",
-            "LinkedInLink": "",
-            "WebsiteLink": ""
-          },
-            "Id": 1, 
-            "NewsquidUserId": 8, 
-            "CreatedAt": "2014-04-14T02:15:15Z", 
-            "UpdatedAt": "2014-04-14T02:15:15Z", 
-            "Name": "User 2",
-            "Email": "LarsMan@example.org",
-            "Title": "Freelance writer", 
-            "Description": "Description of User 2",
-            "FacebookLink": "",
-            "TwitterLink": "",
-            "GooglePlusLink": "",
-            "LinkedInLink": "",
-            "WebsiteLink": ""
-          }
-        ]
-
-+ Parameters
-    + term (required, string, "lars") ... Search term to matched against email and/or name of users.
 
 ## -> /users/{id} [/users/{id}]
 
