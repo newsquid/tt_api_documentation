@@ -8,9 +8,9 @@ A Group resource has the following attributes:
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
 - **Name**: (string, required) The name of the group 
 - **Description**: (string, optional) A description of the group 
-- **OwnerId**: (int, required) Identifier of the user who created the group and therefore owns it 
+- **UserId**: (int, required) Identifier of the user who created the group and therefore owns it 
 
-The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *OwnerId* are set by the TrunkTrunk API.
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, and *UserId* are set by the TrunkTrunk API.
 
 
 ## -> /groups [/groups]
@@ -25,7 +25,7 @@ Any signed in user can create a group.
         {
           "Name": "Group 1 name",
           "Description": "Group 1 description",
-          "OwnerId": "2"
+          "UserId": "2"
         }
 
 + Response 201 (application/json)
@@ -36,7 +36,7 @@ Any signed in user can create a group.
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "Group 1 name",
           "Description": "Group 1 description",
-          "OwnerId": "2"
+          "UserId": "2"
         }
 
 ### Update [PUT]
@@ -60,7 +60,7 @@ Any member of the group can update it.
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "New Group 1 name",
           "Description": "New Group 1 description",
-          "OwnerId": "2"
+          "UserId": "2"
         }
 
 
@@ -82,7 +82,7 @@ Any user can do this request. The caller does not have to be signed in.
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "Name": "Group 1 name",
           "Description": "Group 1 description",
-          "OwnerId": "2"
+          "UserId": "2"
         }
 
 
@@ -107,7 +107,7 @@ Any user can do this request. The caller does not have to be signed in.
               "UpdatedAt": "2014-04-14T02:15:15Z", 
               "Name": "Group 1 name",
               "Description": "Group 1 description",
-              "OwnerId": "1"
+              "UserId": "1"
             },
             {
               "Id": 3,
@@ -115,6 +115,6 @@ Any user can do this request. The caller does not have to be signed in.
               "UpdatedAt": "2014-04-14T02:15:15Z", 
               "Name": "Group 3 name",
               "Description": "Group 3 description",
-              "OwnerId": "1"
+              "UserId": "1"
             }
         ]

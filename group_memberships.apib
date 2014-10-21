@@ -4,18 +4,18 @@ The connection between groups and users and vice versa.
 A GroupMembership resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
-- **Token**: (string, required) Unique identifier
+- **Token**: (string, required) A unique token granting permission to accept and reject group invites
 - **CreatedAt**: (datetime, required) The time of creation of the resource
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
 - **GroupId**: (int, required) Identifier of the group to which the membership applies
-- **InviterId**: (int) Identifier of the user who made the invitation
+- **InviterId**: (int, required) Identifier of the user who made the invitation
 - **InviteeId**: (int) Identifier of the user to which the membership applies
 - **InviteeEmail**: (string) Email address to send invitation to
 - **Status**: (string, required) The status of the membership. When a 
 membership is first created, the status is "pending". When a membership is
 accepted, the status changes to "active". Alternatively, an invitation can be rejected by setting the status to "rejected".
 
-The attributes *Id*, *CreatedAt*, *UpdatedAt*, *Token*, and *Status* are set by the TrunkTrunk API.
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, *Token*, *InviterId*, and *Status* are set by the TrunkTrunk API.
 
 
 ## -> /groups/memberships [/groups/memberships]
