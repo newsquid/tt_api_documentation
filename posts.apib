@@ -14,18 +14,16 @@ A Post resource has the following attributes:
 - **ImageCaption**: (string, optional) The caption of the post image
 - **Price**: (decimal, required) The price of the post. If set to 0.0, the post is free.
 - **NewsquidProductId**: (int, optional) The integer of the product in NEWSQUID corresponding to the post, if such a product exists.
-- **PublishedRevision**: (int, optional) The revision number of the post revision currently published. I set to 0, the post is not published.
+- **PublishedRevision**: (int, optional) The revision number of the post revision currently published. I 0, the post is not published.
 - **GroupId**: (int, optional) The id of the group to which the post belong. If set to 0, the post is considered part of no group.
 
-The attributes *Id*, *Revision*, *CreatedAt*, and *UpdatedAt*, *OwnerId* are set by the TrunkTrunk API.
+The attributes *Id*, *Revision*, *CreatedAt*, *UpdatedAt*, *OwnerId*, and *PublishedRevision* are set by the TrunkTrunk API.
 
 
 ## -> /posts [/posts]
 
 ### Create [POST]
-Create a new post. The post is published immediately, if the
-*PublishedRevision* attribute is set to 1. If this is not desired, the
-*PublishedRevision* attribute must be set to 0.
+Create a new post. The post is not published per default.
 
 Any signed in user can create a post.
 
@@ -63,9 +61,9 @@ Any signed in user can create a post.
         }
 
 ### Update [PUT]
-Update a post. If the *PublishedRevision* attribute is set to the current
-revision number + 1, the changes are published immediately. If working on a
-draft, the *PublishedRevision* attribute must remain unchanged.
+Update a post. The changes are saved as a draft and are not published. If a
+previous version of the post is published, this remains the case (the published
+version of post is not altered).
 
 Only the creator of the post or any user in the group to which the post belongs can update a post.
 
@@ -84,7 +82,54 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageCaption": "Image caption of Post 1",
           "Price:": 0,
           "NewsquidProductId": 0,
-          "PublishedRevision": 2,
+          "PublishedRevision": 1,
+          "GroupId": 0
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1, 
+          "Revision": 2, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "ImageCaption": "Image caption of Post 1",
+          "Price:": 0,
+          "NewsquidProductId": 0,
+          "PublishedRevision": 1,
+          "GroupId": 0
+        }
+
+
+## -> /posts/publish [/posts/publish]
+
+### Update [PUT]
+Update a post. the changes are published. If a previous version of the post is
+already published, the previous version is replaced with the new version.
+
+Only the creator of the post or any user in the group to which the post belongs can update a post.
+
++ Request (application/json)
+
+        {
+          "Id": 1, 
+          "Revision": 1, 
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "Title": "Post 1", 
+          "Content": "Content of Post 1", 
+          "Tags" [
+            "Tag 1", "Tag 2", "Tag 3"
+          ],
+          "ImageCaption": "Image caption of Post 1",
+          "Price:": 0,
+          "NewsquidProductId": 0,
+          "PublishedRevision": 1,
           "GroupId": 0
         }
 
@@ -106,7 +151,6 @@ Only the creator of the post or any user in the group to which the post belongs 
           "PublishedRevision": 2,
           "GroupId": 0
         }
-
 
 
 ## -> /posts/{id} [/posts/{id}]
