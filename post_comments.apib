@@ -76,12 +76,12 @@ Only the creator of a comment can delete it.
 + Response 204
 
 
-## -> /posts/comments/post/{id} [/posts/comments/post/{id}]
+## -> /posts/comments/post/{id} [/posts/comments/post/{id}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... Id of the post.
-    + items_per_page (required, number, `1`) ... How many comments to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many comments to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Gets all comments to the post with the given id
