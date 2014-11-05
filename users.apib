@@ -22,7 +22,7 @@ The attributes *Id*, *NewsquidUserId*, *CreatedAt*, and *UpdatedAt* are set by t
 ## -> /users{?search} [/users{?search}]
 
 + Parameters
-    + search (required, string, "lars") ... Search term to matched against email and/or name of users.
+    + search (required, string, `lars`) ... Search term to matched against email and/or name of users.
 
 ### Search [GET]
 Get a list of users, based on a search on their name and email
@@ -159,12 +159,12 @@ Anyone can do this request. The caller does not need to be signed in.
         }
 
 
-## -> /users/group/{id} [/users/group/{id}]
+## -> /users/group/{id} [/users/group/{id}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... Id of the group.
-    + items_per_page (required, number, `1`) ... How many users to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many users to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all users of the group with the given id.

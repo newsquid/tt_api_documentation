@@ -85,12 +85,12 @@ Any user can do this request. The caller does not have to be signed in.
         }
 
 
-## -> /groups/user/{id} [/groups/user/{id}]
+## -> /groups/user/{id} [/groups/user/{id}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... Id of the user.
-    + items_per_page (required, number, `1`) ... How many groups to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many groups to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get a list of the groups where the user with the given id is member.
