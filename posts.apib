@@ -220,12 +220,12 @@ Only the creator of the post or any user in the group to which the post belongs 
         }
 
 
-##  -> /posts/user/{id} [/posts/user/{id}]
+##  -> /posts/user/{id} [/posts/user/{id}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... Id of the user.
-    + items_per_page (required, number, `1`) ... How many posts to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many posts to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all published posts of the user with the given id.
@@ -267,12 +267,12 @@ Anyone get do this request. It does not require that the caller is signed in.
         }]
 
 
-## -> /posts/group/{id} [/posts/group/{id}]
+## -> /posts/group/{id} [/posts/group/{id}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... Id of the group.
-    + items_per_page (required, number, `1`) ... How many posts to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many posts to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
 Get all published posts of the group with the given id.
@@ -357,12 +357,12 @@ Anyone get do this request. It does not require that the caller is signed in.
         }]
 
 
-## -> /posts{?search} [/posts{?search}]
+## -> /posts{?search} [/posts{?search,items_per_page,page}]
 
 + Parameters
     + search (required, string) ... Search string. The terms with which to search.
-    + items_per_page (required, number, `1`) ... How many posts to return per request.
-    + page (required, number, `1`) ... How many *items_per_page* to skip.
+    + items_per_page (optional, number, `1`) ... How many posts to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Search for posts [GET]
 Retrieve all published posts matching the given search parameter (fuzzy
