@@ -20,10 +20,12 @@ A User resource has the following attributes:
 
 The attributes *Id*, *NewsquidUserId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
 
-## -> /users{?search} [/users{?search}]
+## -> /users{?search} [/users{?search,items_per_page,page}]
 
 + Parameters
     + search (required, string, `lars`) ... Search term to matched against email and/or name of users.
+    + items_per_page (optional, number, `1`) ... How many users to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Search [GET]
 Get a list of users, based on a search on their name and email
