@@ -15,13 +15,13 @@ All attributes are set by the TrunkTrunk API.
 ## -> /users/sessions [/users/sessions]
 
 ### Create [POST]
-Create a new user session. No request payload is expected. Instead, a valid
-NEWSQUID token is expected to be sent in the *Authorization* HTTP header.
+Create a new user session. Expects a valid Newsquid token as request data. 
 
 + Request (application/json)
-    + Headers
-            
-            Authorization: QWxhZGRpbjpvcGVuIHNlc2FtZQ
+        
+        {
+            "Token": "NewsquidToken"
+        }
 
 + Response 201 (application/json)
 
@@ -30,7 +30,7 @@ NEWSQUID token is expected to be sent in the *Authorization* HTTP header.
           "CreatedAt": "2014-04-14T02:15:15Z",
           "UpdatedAt": "2014-04-18T02:15:15Z",
           "ExpiresAt": "2014-04-18T03:15:15Z",
-          "Token": "QWxhZGRpbjpvcGVuIHNlc2FtZQ",
+          "Token": "QWxhZGRpbjpvcGVuIHNlc2FtZQ"
         }
 
 
