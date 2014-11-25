@@ -1,0 +1,58 @@
+# Group Reads
+Reads, that is, one read on a post, done by a user. Can be incomplete, that is
+not a full read to the end of the post.
+
+A Read resource has the following attributes:
+
+- **Id**: (int, required)
+- **UserId**: (int, optional) The user who has read the post
+- **PostId**: (int, required) The post read
+- **Complete**: (bool, default false) Whether or not the user has reached the end
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+
+The general flow, is to create a read, save the Id, that is returned, and PUT
+the id when and if the user reaches the end. Client is responsible for keeping
+state in the case of anonymous reads.
+
+## -> /reads [/reads]
+
+### Create [POST]
+Create a read, optionally connected to a user. Always connected to a post.
+
+If a UserId is specified, it must be the id of the signed in user
+PostId must exist
+
++ Request (application/json)
+
+        {
+          "UserId": "1",
+          "PostId": "1",
+          "Complete": false
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 1,
+          "UserId": "1",
+          "PostId": "1",
+          "Complete": false,
+          "CreatedAt": "2014-04-14T02:15:15Z"
+        }
+
+### Update [PUT]
+Update a read, optionally connected to a user. Always connected to a post.
+
++ Request (application/json)
+
+        {
+          "Id": 1,
+          "UserId": "1",
+          "PostId": "1",
+          "Complete": true
+          "CreatedAt": "2014-04-14T02:15:15Z"
+        }
+
++ Response 204 (application/json)
+
+        {}

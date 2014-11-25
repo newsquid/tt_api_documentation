@@ -9,3 +9,4 @@ external_posts.apib
 external_publishers.apib
 post_abuse_reports.apib
 files.apib
+reads.apib
