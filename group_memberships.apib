@@ -41,7 +41,9 @@ Any member of a group can invite other users to join it.
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
           "GroupId": 7,
-          "Invitee": 3,
+          "InviterId": 2,
+          "InviteeId": 3,
+          "InviteeEmail": "",
           "Status": "Pending"
         }
 
@@ -66,7 +68,9 @@ Only the user to which to group membership applies can update it.
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-23T06:06:15Z", 
           "GroupId": 7,
-          "UserId": 3,
+          "InviterId": 2,
+          "InviteeId": 3,
+          "InviteeEmail": "",
           "Status": "Active"
         }
 
@@ -102,7 +106,9 @@ Only members of the group can get the pending memberships of the group.
             "CreatedAt": "2014-04-14T02:15:15Z", 
             "UpdatedAt": "2014-04-23T06:06:15Z", 
             "GroupId": 1,
-            "UserId": 3,
+            "InviterId": 2,
+            "InviteeId": 3,
+            "InviteeEmail": "",
             "Status": "Pending"
           },
           {
@@ -110,7 +116,9 @@ Only members of the group can get the pending memberships of the group.
             "CreatedAt": "2014-04-14T02:15:15Z", 
             "UpdatedAt": "2014-04-23T06:06:15Z", 
             "GroupId": 1,
-            "UserId": 4,
+            "InviterId": 2,
+            "InviteeId": 0,
+            "InviteeEmail": "test@example.org",
             "Status": "Pending"
           }
         ]
@@ -132,6 +140,9 @@ Any signed in user can do this request.
             "UpdatedAt": "2014-04-23T06:06:15Z", 
             "GroupId": 1,
             "UserId": 3,
+            "InviterId": 2,
+            "InviteeId": 3,
+            "InviteeEmail": "",
             "Status": "Pending"
           },
           {
@@ -139,7 +150,9 @@ Any signed in user can do this request.
             "CreatedAt": "2014-04-14T02:15:15Z", 
             "UpdatedAt": "2014-04-23T06:06:15Z", 
             "GroupId": 1,
-            "UserId": 4,
+            "InviterId": 2,
+            "InviteeId": 0,
+            "InviteeEmail": "test@example.org",
             "Status": "Pending"
           }
         ]
