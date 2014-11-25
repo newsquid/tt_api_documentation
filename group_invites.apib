@@ -1,27 +1,27 @@
-# Group GroupMemberships 
+# Group GroupInvites 
 The connection between groups and users and vice versa.
 
-A GroupMembership resource has the following attributes:
+A GroupInvite resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
 - **CreatedAt**: (datetime, required) The time of creation of the resource
 - **UpdatedAt**: (datetime, required) The latest time of modification of the resource
-- **GroupId**: (int, required) Identifier of the group to which the membership applies
+- **GroupId**: (int, required) Identifier of the group to which the invite applies
 - **InviterId**: (int, required) Identifier of the user who made the invitation
-- **InviteeId**: (int) Identifier of the user to which the membership applies
+- **InviteeId**: (int) Identifier of the user to which the invite applies
 - **InviteeEmail**: (string) Email address to send invitation to
-- **Status**: (string, required) The status of the membership. When a 
-membership is first created, the status is "pending". When a membership is
+- **Status**: (string, required) The status of the invite. When an 
+invite is first created, the status is "pending". When an invite is
 accepted, the status changes to "active". Alternatively, an invitation can be rejected by setting the status to "rejected".
 
 The attributes *Id*, *CreatedAt*, *UpdatedAt*, *InviterId*, and *Status* are set by the TrunkTrunk API.
 
 
-## -> /groups/memberships [/groups/memberships]
+## -> /groups/invites [/groups/invites]
 
 ### Create [POST]
-Create a new group membership. The creation results in the creation of a new
-GroupMembership ship resource with the status "pending" as well as in an
+Create a new group invite. The creation results in the creation of a new
+GroupInvite ship resource with the status "pending" as well as in an
 invitation email to the user invited to join the group.
 An invitation must contain *either* an **InviteeId** *or* an **InviteeEmail**, never both, as the presence of **InviteeEmail** will indicate that the user does not exist on trunktrunk, and should be invited by email.
 
@@ -48,11 +48,11 @@ Any member of a group can invite other users to join it.
         }
 
 ### Update [PATCH]
-Accept or reject the group membership. This results in the status of the resource
+Accept or reject the group invite. This results in the status of the resource
 changing from "pending" to "active" or "rejected". 
 The idea is to give users the option to accept an invitation (by this request) or decline it.
 
-Only the user to which to group membership applies can update it.
+Only the user to which to group invite applies can update it.
 
 + Request (application/json)
 
@@ -75,28 +75,28 @@ Only the user to which to group membership applies can update it.
         }
 
 
-## -> /groups/memberships/{id} [/groups/memberships/{id}]
+## -> /groups/invites/{id} [/groups/invites/{id}]
 
 + Parameters
-    + id (required, number, `1`) ... Id of the GroupMembership.
+    + id (required, number, `1`) ... Id of the GroupInvite.
 
-### Delete a GroupMembership [DELETE]
-Delete the GroupMembership with the given id. This corresponds to leaving a group.
+### Delete a GroupInvite [DELETE]
+Delete the GroupInvite with the given id. This corresponds to leaving a group.
 
-Only the invited or the inviting user can delete it.
+Only the invited user or a member of the group can delete it.
 
 + Response 204
 
 
-## -> /groups/memberships/group/{id}/pending [/groups/memberships/group/{id}/pending]
+## -> /groups/invites/group/{id}/pending [/groups/invites/group/{id}/pending]
 
 + Parameters
     + id (required, number, `1`) ... Id of the group.
 
 ### Get [GET]
-Get all pending group memberships of the group with the given id.
+Get all pending group invites to the group with the given id.
 
-Only members of the group can get the pending memberships of the group.
+Only members of the group can get the pending invites to the group.
 
 + Response 201 (application/json)
 
@@ -124,10 +124,10 @@ Only members of the group can get the pending memberships of the group.
         ]
 
 
-## -> /groups/memberships/user/current/pending [/groups/memberships/user/current/pending]
+## -> /groups/invites/user/current/pending [/groups/invites/user/current/pending]
 
 ### Get [GET]
-Get all pending group memberships of the current user.
+Get all pending group invites of the current user.
 
 Any signed in user can do this request.
 

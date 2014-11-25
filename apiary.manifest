@@ -4,7 +4,7 @@ post_comments.apib
 users.apib
 user_sessions.apib
 groups.apib
-group_memberships.apib
+group_invites.apib
 external_posts.apib
 external_publishers.apib
 post_abuse_reports.apib
