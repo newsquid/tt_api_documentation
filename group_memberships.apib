@@ -85,3 +85,68 @@ Delete the GroupMembership with the given id. This corresponds to leaving a grou
 Only the invited or the inviting user can delete it.
 
 + Response 204
+
+
+## -> /groups/memberships/group/{id}/pending [/groups/memberships/group/{id}/pending]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the group.
+
+### Get [GET]
+Get all pending group memberships of the group with the given id.
+
+Only members of the group can get the pending memberships of the group.
+
++ Response 201 (application/json)
+
+        [
+          {
+            "Id": 4,
+            "Token": "c2246bef37c1373590b58c406634a6cd"
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "UserId": 3,
+            "Status": "Pending"
+          },
+          {
+            "Id": 5,
+            "Token": "c2246bef37c1373590b58c406634a6cd"
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "UserId": 4,
+            "Status": "Pending"
+          }
+        ]
+
+
+## -> /groups/memberships/user/current/pending [/groups/memberships/user/current/pending]
+
+### Get [GET]
+Get all pending group memberships of the current user.
+
+Any signed in user can do this request.
+
++ Response 201 (application/json)
+
+        [
+          {
+            "Id": 4,
+            "Token": "c2246bef37c1373590b58c406634a6cd"
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "UserId": 3,
+            "Status": "Pending"
+          },
+          {
+            "Id": 5,
+            "Token": "c2246bef37c1373590b58c406634a6cd"
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "UserId": 4,
+            "Status": "Pending"
+          }
+        ]
