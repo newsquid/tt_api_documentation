@@ -47,9 +47,11 @@ Only the owner of the post or members of the group of the post can do this reque
     + id (required, number, `1`) ... Id of the post.
 
 ### Get [GET]
-Gets the number of views of the post with the given id.
+Gets the number of views (Read entries with Completed set to false) of the post
+with the given id.
 
-Only the owner of the post or members of the group of the post can do this request.
+Only the owner of the post or members of the group of the post can do this
+request.
 
 + Response 200 (application/json)
 
@@ -64,9 +66,11 @@ Only the owner of the post or members of the group of the post can do this reque
     + id (required, number, `1`) ... Id of the post.
 
 ### Get [GET]
-Gets the number of reads of the post with the given id.
+Gets the number of reads (Read entries with Completed set to true) of the post
+with the given id.
 
-Only the owner of the post or members of the group of the post can do this request.
+Only the owner of the post or members of the group of the post can do this
+request.
 
 + Response 200 (application/json)
 
