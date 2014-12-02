@@ -1,0 +1,22 @@
+# Purchase counts
+A purchase count is the number of times a post has been purchased.
+
+A PurchaseCount resource has the following attribute:
+
+- **Count**: (int, required)
+
+## -> /reads/post/{id} [/reads/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets all the reads of the post with the given id.
+
+Owner the owner of the post can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 1
+        }
