@@ -5,8 +5,9 @@ A File resource has the following attributes:
 
 - **Id**: (int, required) Unique identifier
 - **CreatedAt**: (datetime, required) The time of creation of the resource
-- **ContentType**: (string, required) The content type of the file 
-- **Url**: (string, required) The public URL of the file 
+- **ContentType**: (string, required) The content type of the file
+- **Url**: (string, required) The public URL of the file
+- **link**: (string, required) Same as Url... Because it is required by the WYSIWYG editor in use
 
 All attributes are set by the TrunkTrunk API.
 
@@ -36,7 +37,8 @@ in other resources where such an url is needed.
 
         {
           "Id": 1,
-          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "CreatedAt": "2014-04-14T02:15:15Z",
           "ContentType": "image/jpeg",
-          "Url": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image"
+          "Url": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
+          "link": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image"
         }
