@@ -5,22 +5,6 @@ A Count resource has the following attribute:
 
 - **Count**: (int, required)
 
-## -> /counts/purchases/post/{id} [/counts/purchases/post/{id}]
-
-+ Parameters
-    + id (required, number, `1`) ... Id of the post.
-
-### Get [GET]
-Gets the number of purchases of the post with the given id.
-
-Only the owner of the post or members of the group of the post can do this request.
-
-+ Response 200 (application/json)
-
-        {
-          "Count": 1
-        }
-
 
 ## -> /counts/posts/group/{id} [/counts/posts/group/{id}]
 
@@ -31,6 +15,24 @@ Only the owner of the post or members of the group of the post can do this reque
 Gets the number of posts of the group with the given id.
 
 Only members of the group can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 1
+        }
+
+
+
+## -> /counts/purchases/post/{id} [/counts/purchases/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of purchases of the post with the given id.
+
+Only the owner of the post or members of the group of the post can do this request.
 
 + Response 200 (application/json)
 
