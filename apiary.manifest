@@ -10,4 +10,4 @@ external_publishers.apib
 post_abuse_reports.apib
 files.apib
 reads.apib
-purchase_counts.apib
+counts.apib
