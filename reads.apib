@@ -56,32 +56,3 @@ Update a read, optionally connected to a user. Always connected to a post.
 + Response 204 (application/json)
 
         {}
-
-## -> /reads/post/{id} [/reads/post/{id}]
-
-+ Parameters
-    + id (required, number, `1`) ... Id of the post.
-
-### Get [GET]
-Gets all the reads of the post with the given id.
-
-Owner the owner of the post can do this request.
-
-+ Response 200 (application/json)
-
-        [
-            {
-              "Id": 1,
-              "UserId": "1",
-              "PostId": "1",
-              "Complete": false,
-              "CreatedAt": "2014-04-14T02:15:15Z"
-            },
-            {
-              "Id": 2,
-              "UserId": "3",
-              "PostId": "1",
-              "Complete": true,
-              "CreatedAt": "2014-04-14T02:15:15Z"
-            }
-        ]

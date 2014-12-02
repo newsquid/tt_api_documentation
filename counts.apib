@@ -13,7 +13,7 @@ A Count resource has the following attribute:
 ### Get [GET]
 Gets the number of purchases of the post with the given id.
 
-Only the owner of the post can do this request.
+Only the owner of the post or members of the group of the post can do this request.
 
 + Response 200 (application/json)
 
@@ -36,4 +36,38 @@ Only members of the group can do this request.
 
         {
           "Count": 1
+        }
+
+
+## -> /counts/views/post/{id} [/counts/views/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of views of the post with the given id.
+
+Only the owner of the post or members of the group of the post can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 4
+        }
+
+
+## -> /counts/reads/post/{id} [/counts/reads/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of reads of the post with the given id.
+
+Only the owner of the post or members of the group of the post can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 2
         }
