@@ -20,6 +20,8 @@ A Post resource has the following attributes:
 
 The attributes *Id*, *Revision*, *CreatedAt*, *UpdatedAt*, *OwnerId*, *DraftRevisionId*, and *PublishedRevisionId* are set by the TrunkTrunk API.
 
+The fields **Content** and **Tags** are required only when publishing a post. They can be empty, when the post is a draft.
+
 
 ## -> /posts [/posts]
 
@@ -68,7 +70,7 @@ Update a post. The changes are saved as a draft and are not published. If a
 previous version of the post is published, this remains the case (the published
 version of post is not altered).
 
-Only the creator of the post or any user in the group to which the post belongs can update a post.
+Only the creator of a post can update it.
 
 + Request (application/json)
 
@@ -117,7 +119,7 @@ Only the creator of the post or any user in the group to which the post belongs 
 Update a post. the changes are published. If a previous version of the post is
 already published, the previous version is replaced with the new version.
 
-Only the creator of the post or any user in the group to which the post belongs can update a post.
+Only the creator of a post can update it.
 
 + Request (application/json)
 
@@ -194,7 +196,7 @@ Anyone can get a post by its id. It does not require that the caller is signed i
 ### Delete [DELETE]
 Delete the post with the given id.
 
-Only the creator of the post or any user in the group to which the post belongs can delete a post.
+Only the creator of a post can delete it.
 
 + Response 204
 
@@ -207,7 +209,7 @@ Only the creator of the post or any user in the group to which the post belongs 
 ### Get [GET]
 Get the latest draft of the post with the given id.
 
-Only the creator of the post or any user in the group to which the post belongs can get the latest draft of a post.
+Only the creator of a post can get the draft.
 
 + Response 200 (application/json)
 
