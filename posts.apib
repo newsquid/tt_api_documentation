@@ -422,11 +422,10 @@ search).
           "GroupId": 0
         }]
 
-## -> posts/accesses/{userId}/{postId} [/accesses/{userId}/{postId}]
+## -> posts/{id}/access [posts/{id}]
 
 + Parameters
-    + userId (required, number, `1`) ... Id of the user.
-    + postId (required, number, `1`) ... Id of the post
+    + d (required, number, `1`) ... Id of the post
 
 ### Check for access [GET]
 Access defines whether a user has access to a post.
@@ -434,9 +433,7 @@ Access defines whether a user has access to a post.
 Access to a post is given to a user if:
 
 - The post is freely available (eg. free or not on newsquid), or
-- The user has previously bought the post
-
-UserId can be null in which case anonmous access is requested
+- The user who is currently signed in has previously bought the post
 
 + Response 200 (application/json)
 
