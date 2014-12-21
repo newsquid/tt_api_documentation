@@ -421,3 +421,23 @@ search).
           "PublishedRevisionId": 2,
           "GroupId": 0
         }]
+
+## -> /posts/{id}/access [/posts/{id}/access]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post
+
+### Check for access [GET]
+Access defines whether a user has access to a post.
+
+Access to a post is given to a user if:
+
+- The post is freely available (eg. free or not on newsquid), or
+- The user who is currently signed in has previously bought the post
+
++ Response 200 (application/json)
+
+        {
+          "HasAccess": true
+        }
+
