@@ -81,9 +81,9 @@ Only the user to which to group invite applies can update it.
     + id (required, number, `1`) ... Id of the GroupInvite.
 
 ### Delete a GroupInvite [DELETE]
-Delete the GroupInvite with the given id. This corresponds to leaving a group.
+Delete the GroupInvite with the given id, effectively cancelling the invite.
 
-Only the invited user or a member of the group can delete it.
+Only the group can cancel an invite.
 
 + Response 204
 
