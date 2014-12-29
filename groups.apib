@@ -125,3 +125,12 @@ Any user can do this request. The caller does not have to be signed in.
               "UserId": "1"
             }
         ]
+
+## -> /groups/{id}/user/{id} [/groups/{id}/user/{id}]
+
+### Delete [DELETE]
+Removes a user from a group.
+
+Only the user can remove himself if he is a member of the group.
+
++ Response 200 (application/json)
