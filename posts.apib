@@ -241,6 +241,7 @@ Only the creator of the post or any user in the group to which the post belongs 
 Get all published posts of the user with the given id.
 
 Anyone get do this request. It does not require that the caller is signed in.
+If the caller is logged in as the requested user, the posts will also include unpublished posts.
 
 + Response 200 (application/json)
 
