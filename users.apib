@@ -17,8 +17,10 @@ A User resource has the following attributes:
 - **GooglePlusLink**:(string, optional) A link to the Google+ page of the user
 - **LinkedInLink**: (string, optional) A link to the LinkedIn page of the user
 - **WebsiteLink**: (string, optional) A link to the personal website/blog of the user
+- **AcceptedTOS**: (datetime, optional) The date and time of TOS acceptance
+- **NotifiedAboutTOS**: (datetime, optional) The date and time of notification about TOS updates
 
-The attributes *Id*, *NewsquidUserId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+The attributes *Id*, *NewsquidUserId*, *CreatedAt*, *UpdatedAt*, and *NotifiedAboutTOS* are set by the TrunkTrunk API.
 
 ## -> /users{?search} [/users{?search,items_per_page,page}]
 
@@ -40,6 +42,8 @@ Anyone can do this request. The caller does not need to be signed in.
             "NewsquidUserId": 7, 
             "CreatedAt": "2014-04-14T02:15:15Z", 
             "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "AcceptedTOS": "2014-04-14T02:15:15Z", 
+            "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
             "Name": "Lars",
             "Email": "user1@example.org",
             "Title": "Freelance writer", 
@@ -52,10 +56,12 @@ Anyone can do this request. The caller does not need to be signed in.
             "WebsiteLink": ""
           },
           {
-            "Id": 1, 
+            "Id": 2, 
             "NewsquidUserId": 8, 
             "CreatedAt": "2014-04-14T02:15:15Z", 
             "UpdatedAt": "2014-04-14T02:15:15Z", 
+            "AcceptedTOS": "2014-04-14T02:15:15Z", 
+            "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
             "Name": "User 2",
             "Email": "LarsMan@example.org",
             "Title": "Freelance writer", 
@@ -84,6 +90,8 @@ Any signed in user can do this request.
           "NewsquidUserId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "AcceptedTOS": "2014-04-14T02:15:15Z", 
+          "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
           "Name": "User 1",
           "Email": "user1@example.org",
           "Title": "Freelance writer",
@@ -107,6 +115,8 @@ Any signed in user can do this request.
         {
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "AcceptedTOS": "2014-04-14T02:15:15Z", 
+          "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
           "Name": "Updated User 1",
           "Email": "user1@example.org",
           "Title": "Freelance writer", 
@@ -126,6 +136,8 @@ Any signed in user can do this request.
           "NewsquidUserId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "AcceptedTOS": "2014-04-14T02:15:15Z", 
+          "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
           "Name": "Updated User 1",
           "Email": "user1@example.org",
           "Title": "Freelance writer", 
@@ -156,6 +168,8 @@ Anyone can do this request. The caller does not need to be signed in.
           "NewsquidUserId": 7, 
           "CreatedAt": "2014-04-14T02:15:15Z", 
           "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "AcceptedTOS": "2014-04-14T02:15:15Z", 
+          "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
           "Name": "User 1",
           "Email": "user1@example.org",
           "Title": "Freelance writer", 
@@ -189,6 +203,8 @@ Anyone can do this request. The caller does not need to be signed in.
               "NewsquidUserId": 7, 
               "CreatedAt": "2014-04-14T02:15:15Z", 
               "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "AcceptedTOS": "2014-04-14T02:15:15Z", 
+              "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
               "Name": "User 1",
               "Email": "user1@example.org",
               "Title": "Freelance writer", 
@@ -205,6 +221,8 @@ Anyone can do this request. The caller does not need to be signed in.
               "NewsquidUserId": 23, 
               "CreatedAt": "2014-04-14T02:15:15Z", 
               "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "AcceptedTOS": "2014-04-14T02:15:15Z", 
+              "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
               "Name": "User 3",
               "Email": "user3@example.org",
               "Title": "Freelance publisher", 

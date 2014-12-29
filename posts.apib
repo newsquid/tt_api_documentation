@@ -13,12 +13,15 @@ A Post resource has the following attributes:
 - **ImageUrl**: (string, option) Url of the post image
 - **ImageCaption**: (string, optional) The caption of the post image
 - **Price**: (decimal, required) The price of the post. If set to 0.0, the post is free.
+- **ReadingTime**: (int, required) Estimated reading time of the post in minutes. 0 means less than 1 minute.
 - **NewsquidProductId**: (int, optional) The integer of the product in NEWSQUID corresponding to the post, if such a product exists.
 - **DraftRevisionId**: (int, required) The revision number of the newest post revision.
 - **PublishedRevisionId**: (int, optional) The revision number of the post revision currently published. I 0, the post is not published.
 - **GroupId**: (int, optional) The id of the group to which the post belong. If set to 0, the post is considered part of no group.
 
-The attributes *Id*, *Revision*, *CreatedAt*, *UpdatedAt*, *OwnerId*, *DraftRevisionId*, and *PublishedRevisionId* are set by the TrunkTrunk API.
+The attributes *Id*, *ReadingTime*, *DraftRevisionId*, *PublishedRevisionId*, *CreatedAt*, *UpdatedAt*, *OwnerId*, *DraftRevisionId*, and *PublishedRevisionId* are set by the TrunkTrunk API.
+
+The fields **Content** and **Tags** are required only when publishing a post. They can be empty, when the post is a draft.
 
 
 ## -> /posts [/posts]
@@ -57,6 +60,7 @@ Any signed in user can create a post.
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 1, 
           "PublishedRevisionId": 0,
@@ -68,7 +72,7 @@ Update a post. The changes are saved as a draft and are not published. If a
 previous version of the post is published, this remains the case (the published
 version of post is not altered).
 
-Only the creator of the post or any user in the group to which the post belongs can update a post.
+Only the creator of a post can update it.
 
 + Request (application/json)
 
@@ -104,6 +108,7 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 1,
@@ -117,7 +122,7 @@ Only the creator of the post or any user in the group to which the post belongs 
 Update a post. the changes are published. If a previous version of the post is
 already published, the previous version is replaced with the new version.
 
-Only the creator of the post or any user in the group to which the post belongs can update a post.
+Only the creator of a post can update it.
 
 + Request (application/json)
 
@@ -153,6 +158,7 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 2,
@@ -185,6 +191,7 @@ Anyone can get a post by its id. It does not require that the caller is signed i
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 1, 
           "PublishedRevisionId": 1,
@@ -194,7 +201,7 @@ Anyone can get a post by its id. It does not require that the caller is signed i
 ### Delete [DELETE]
 Delete the post with the given id.
 
-Only the creator of the post or any user in the group to which the post belongs can delete a post.
+Only the creator of a post can delete it.
 
 + Response 204
 
@@ -207,7 +214,7 @@ Only the creator of the post or any user in the group to which the post belongs 
 ### Get [GET]
 Get the latest draft of the post with the given id.
 
-Only the creator of the post or any user in the group to which the post belongs can get the latest draft of a post.
+Only the creator of a post can get the draft.
 
 + Response 200 (application/json)
 
@@ -223,10 +230,11 @@ Only the creator of the post or any user in the group to which the post belongs 
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
-          "DraftRevisionId": 5, 
+          "DraftRevisionId": 5,
           "PublishedRevisionId": 2,
-          "GroupId": 0
+          "GroupId": 1
         }
 
 
@@ -257,6 +265,7 @@ If the caller is logged in as the requested user, the posts will also include un
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 3, 
           "PublishedRevisionId": 3,
@@ -273,6 +282,7 @@ If the caller is logged in as the requested user, the posts will also include un
           "ImageUrl": "https://ag.arizona.edu/yavapai/graphics/bamboo.jpg",
           "ImageCaption": "Image caption of Post 2",
           "Price": 1.1,
+          "ReadingTime": 8,
           "NewsquidProductId": 7,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 2,
@@ -306,6 +316,7 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 3, 
           "PublishedRevisionId": 3,
@@ -322,6 +333,7 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageUrl": "https://ag.arizona.edu/yavapai/graphics/bamboo.jpg",
           "ImageCaption": "Image caption of Post 1",
           "Price": 2.2,
+          "ReadingTime": 8,
           "NewsquidProductId": 7,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 2,
@@ -351,6 +363,7 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 3, 
           "PublishedRevisionId": 3,
@@ -367,6 +380,7 @@ Anyone get do this request. It does not require that the caller is signed in.
           "ImageUrl": "https://ag.arizona.edu/yavapai/graphics/bamboo.jpg",
           "ImageCaption": "Image caption of Post 1",
           "Price": 3.1,
+          "ReadingTime": 8,
           "NewsquidProductId": 7,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 2,
@@ -399,6 +413,7 @@ search).
           "ImageUrl": "https://ttmediafiles.s3.amazonaws.com/uploads/media/150/article-main-image",
           "ImageCaption": "Image caption of Post 1",
           "Price": 0,
+          "ReadingTime": 4,
           "NewsquidProductId": 0,
           "DraftRevisionId": 3, 
           "PublishedRevisionId": 3,
@@ -415,8 +430,29 @@ search).
           "ImageUrl": "https://ag.arizona.edu/yavapai/graphics/bamboo.jpg",
           "ImageCaption": "Image caption of Post 2",
           "Price": 0.1,
+          "ReadingTime": 8,
           "NewsquidProductId": 7,
           "DraftRevisionId": 2, 
           "PublishedRevisionId": 2,
           "GroupId": 0
         }]
+
+## -> /posts/{id}/access [/posts/{id}/access]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post
+
+### Check for access [GET]
+Access defines whether a user has access to a post.
+
+Access to a post is given to a user if:
+
+- The post is freely available (eg. free or not on newsquid), or
+- The user who is currently signed in has previously bought the post
+
++ Response 200 (application/json)
+
+        {
+          "HasAccess": true
+        }
+

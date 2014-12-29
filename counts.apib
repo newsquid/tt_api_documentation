@@ -1,0 +1,79 @@
+# Group Counts
+A count is the number of some entity.
+
+A Count resource has the following attribute:
+
+- **Count**: (int, required)
+
+
+## -> /counts/posts/group/{id} [/counts/posts/group/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the group.
+
+### Get [GET]
+Gets the number of posts of the group with the given id.
+
+Only members of the group can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 1
+        }
+
+
+
+## -> /counts/purchases/post/{id} [/counts/purchases/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of purchases of the post with the given id.
+
+Only the owner of the post or members of the group of the post can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 1
+        }
+
+
+## -> /counts/views/post/{id} [/counts/views/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of views (Read entries with Completed set to false) of the post
+with the given id.
+
+Only the owner of the post or members of the group of the post can do this
+request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 4
+        }
+
+
+## -> /counts/reads/post/{id} [/counts/reads/post/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the post.
+
+### Get [GET]
+Gets the number of reads (Read entries with Completed set to true) of the post
+with the given id.
+
+Only the owner of the post or members of the group of the post can do this
+request.
+
++ Response 200 (application/json)
+
+        {
+          "Count": 2
+        }

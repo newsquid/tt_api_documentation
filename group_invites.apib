@@ -1,0 +1,158 @@
+# Group GroupInvites 
+The connection between groups and users and vice versa.
+
+A GroupInvite resource has the following attributes:
+
+- **Id**: (int, required) Unique identifier
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+- **GroupId**: (int, required) Identifier of the group to which the invite applies
+- **InviterId**: (int, required) Identifier of the user who made the invitation
+- **InviteeId**: (int) Identifier of the user to which the invite applies
+- **InviteeEmail**: (string) Email address to send invitation to
+- **Status**: (string, required) The status of the invite. When an 
+invite is first created, the status is "pending". When an invite is
+accepted, the status changes to "active". Alternatively, an invitation can be rejected by setting the status to "rejected".
+
+The attributes *Id*, *CreatedAt*, *UpdatedAt*, *InviterId*, and *Status* are set by the TrunkTrunk API.
+
+
+## -> /groups/invites [/groups/invites]
+
+### Create [POST]
+Create a new group invite. The creation results in the creation of a new
+GroupInvite ship resource with the status "pending" as well as in an
+invitation email to the user invited to join the group.
+An invitation must contain *either* an **InviteeId** *or* an **InviteeEmail**, never both, as the presence of **InviteeEmail** will indicate that the user does not exist on trunktrunk, and should be invited by email.
+
+Any member of a group can invite other users to join it.
+
++ Request (application/json)
+
+        {
+          "GroupId": 7,
+          "InviteeId": 3
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 4,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "GroupId": 7,
+          "InviterId": 2,
+          "InviteeId": 3,
+          "InviteeEmail": "",
+          "Status": "Pending"
+        }
+
+### Update [PATCH]
+Accept or reject the group invite. This results in the status of the resource
+changing from "pending" to "active" or "rejected". 
+The idea is to give users the option to accept an invitation (by this request) or decline it.
+
+Only the user to which to group invite applies can update it.
+
++ Request (application/json)
+
+        {
+          "Id": 4,
+          "Status": "Active"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 4,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-23T06:06:15Z", 
+          "GroupId": 7,
+          "InviterId": 2,
+          "InviteeId": 3,
+          "InviteeEmail": "",
+          "Status": "Active"
+        }
+
+
+## -> /groups/invites/{id} [/groups/invites/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the GroupInvite.
+
+### Delete a GroupInvite [DELETE]
+Delete the GroupInvite with the given id, effectively cancelling the invite.
+
+Only the group can cancel an invite.
+
++ Response 204
+
+
+## -> /groups/invites/group/{id}/pending [/groups/invites/group/{id}/pending]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the group.
+
+### Get [GET]
+Get all pending group invites to the group with the given id.
+
+Only members of the group can get the pending invites to the group.
+
++ Response 201 (application/json)
+
+        [
+          {
+            "Id": 4,
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "InviterId": 2,
+            "InviteeId": 1,
+            "InviteeEmail": "",
+            "Status": "Pending"
+          },
+          {
+            "Id": 5,
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "InviterId": 2,
+            "InviteeId": 0,
+            "InviteeEmail": "test@example.org",
+            "Status": "Pending"
+          }
+        ]
+
+
+## -> /groups/invites/user/current/pending [/groups/invites/user/current/pending]
+
+### Get [GET]
+Get all pending group invites of the current user.
+
+Any signed in user can do this request.
+
++ Response 201 (application/json)
+
+        [
+          {
+            "Id": 4,
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "UserId": 3,
+            "InviterId": 2,
+            "InviteeId": 3,
+            "InviteeEmail": "",
+            "Status": "Pending"
+          },
+          {
+            "Id": 5,
+            "CreatedAt": "2014-04-14T02:15:15Z", 
+            "UpdatedAt": "2014-04-23T06:06:15Z", 
+            "GroupId": 1,
+            "InviterId": 2,
+            "InviteeId": 0,
+            "InviteeEmail": "test@example.org",
+            "Status": "Pending"
+          }
+        ]
