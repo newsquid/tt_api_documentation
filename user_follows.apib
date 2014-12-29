@@ -1,0 +1,66 @@
+# Group UserFollows
+The connection of users following other users.
+
+A UserFollow resource has the following attributes:
+
+- **Id**: (int, required) Unique identifier
+- **FollowerId**: (int, required) The id of the following user
+- **UserId**: (int, required) The id of the user being followed
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+
+The attributes *Id*, *FollowerId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+
+
+## -> /follows/users [/follows/users]
+
+### Create [POST]
+Create a new UserFollow, following the user with the UserId given.
+
+Any signed in user can do this request.
+
++ Request (application/json)
+
+        {
+          "UserId": 7
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 54,
+          "FollowerId": 13,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "UserId": 7
+        }
+
+
+## -> /follows/users/{id} [/follows/users/{id}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the user being followed.
+
+### Get [GET]
+Get the UserFollow with the current user as follower and the user with the
+given id being followed.
+
+Any signed in user can do this request.
+
++ Response 201 (application/json)
+
+        {
+          "Id": 54,
+          "FollowerId": 13,
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z", 
+          "UserId": 7
+        }
+
+### Delete [DELETE]
+Delete the UserFollow with the current user as follower and the user with the
+given id being followed.
+
+Only the follower can delete it.
+
++ Response 204
