@@ -11,4 +11,4 @@ post_abuse_reports.apib
 files.apib
 reads.apib
 counts.apib
-writer_follows.apib
+follows.apib
