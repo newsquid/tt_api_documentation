@@ -12,3 +12,4 @@ files.apib
 reads.apib
 counts.apib
 follows.apib
+post_tags.apib
