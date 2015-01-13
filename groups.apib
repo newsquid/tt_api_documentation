@@ -141,3 +141,39 @@ Removes user from the group.
 Only memebers of the group can do this request.
 
 + Response 204
+
+
+## -> /groups/followed/user/{id} [/groups/followed/user/{id}{?items_per_page,page}]
+
++ Parameters
+    + id (required, number, `1`) ... Id of the user.
+    + items_per_page (optional, number, `1`) ... How many groups to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
+
+### Get [GET]
+Get a list of the groups followed by the user with the given id.
+
+Any user can do this request. The caller does not have to be signed in.
+
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 1,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "Group 1 name",
+              "Description": "Group 1 description",
+              "ImageUrl": "http://www-static.weddingbee.com/pics/36694/head.jpeg",
+              "UserId": "1"
+            },
+            {
+              "Id": 3,
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "Name": "Group 3 name",
+              "Description": "Group 3 description",
+              "ImageUrl": "http://www-static.weddingbee.com/pics/36694/head.jpeg",
+              "UserId": "1"
+            }
+        ]

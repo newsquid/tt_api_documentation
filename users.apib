@@ -236,3 +236,58 @@ Anyone can do this request. The caller does not need to be signed in.
               "WebsiteLink": ""
             }
         ]
+
+
+## -> /users/followed/type/{type}/user/{id} [/users/followed/type/{type}/user/{id}{?items_per_page,page}]
+
++ Parameters
+    + id (required, number, `1`) ... The type of following ('writer', 'curator').
+    + id (required, number, `1`) ... Id of the user.
+    + items_per_page (optional, number, `1`) ... How many users to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
+
+### Get [GET]
+Get all users followed by the user with the given id where the following is of the given type.
+
+Anyone can do this request. The caller does not need to be signed in.
+
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 1, 
+              "NewsquidUserId": 7, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "AcceptedTOS": "2014-04-14T02:15:15Z", 
+              "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
+              "Name": "User 1",
+              "Email": "user1@example.org",
+              "Title": "Freelance writer", 
+              "Description": "Description of User 1",
+              "ImageUrl": "http://www-static.weddingbee.com/pics/36694/head.jpeg",
+              "FacebookLink": "",
+              "TwitterLink": "",
+              "GooglePlusLink": "",
+              "LinkedInLink": "",
+              "WebsiteLink": ""
+            },
+            {
+              "Id": 3, 
+              "NewsquidUserId": 23, 
+              "CreatedAt": "2014-04-14T02:15:15Z", 
+              "UpdatedAt": "2014-04-14T02:15:15Z", 
+              "AcceptedTOS": "2014-04-14T02:15:15Z", 
+              "NotifiedAboutTOS": "2014-04-14T02:15:15Z", 
+              "Name": "User 3",
+              "Email": "user3@example.org",
+              "Title": "Freelance publisher", 
+              "Description": "Description of User 3",
+              "ImageUrl": "http://www-static.weddingbee.com/pics/36694/head.jpeg",
+              "FacebookLink": "http://facebook.com/user3",
+              "TwitterLink": "http://twitter.com/user3",
+              "GooglePlusLink": "",
+              "LinkedInLink": "",
+              "WebsiteLink": ""
+            }
+        ]
