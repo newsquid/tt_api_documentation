@@ -238,18 +238,17 @@ Anyone can do this request. The caller does not need to be signed in.
         ]
 
 
-## -> /users/followed/type/{type}/user/{id} [/users/followed/type/{type}/user/{id}{?items_per_page,page}]
+## -> /users/followed/type/{type} [/users/followed/type/{type}{?items_per_page,page}]
 
 + Parameters
     + id (required, number, `1`) ... The type of following ('writer', 'curator').
-    + id (required, number, `1`) ... Id of the user.
     + items_per_page (optional, number, `1`) ... How many users to return per request.
     + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
-Get all users followed by the user with the given id where the following is of the given type.
+Get all users followed by the current user where the following is of the given type.
 
-Anyone can do this request. The caller does not need to be signed in.
+Any signed in user can do this request.
 
 + Response 200 (application/json)
 

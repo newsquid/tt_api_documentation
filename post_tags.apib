@@ -26,17 +26,16 @@ Anyone can do this request.
         }
 
 
-## -> /posts/tags/followed/user/{id} [/posts/tags/followed/user/{id}{?items_per_page,page}]
+## -> /posts/tags/followed [/posts/tags/followed{?items_per_page,page}]
 
 + Parameters
-    + id (required, number, `1`) ... Id of the user.
-    + items_per_page (optional, number, `1`) ... How many groups to return per request.
+    + items_per_page (optional, number, `1`) ... How many post tags to return per request.
     + page (optional, number, `1`) ... How many *items_per_page* to skip.
 
 ### Get [GET]
-Get a list of the post tags followed by the user with the given id.
+Get a list of the post tags followed by the current user.
 
-Any user can do this request. The caller does not have to be signed in.
+Any signed in user can do this request.
 
 + Response 200 (application/json)
 
