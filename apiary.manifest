@@ -12,4 +12,6 @@ files.apib
 reads.apib
 counts.apib
 writer_follows.apib
+follows.apib
+post_tags.apib
 admin.apib

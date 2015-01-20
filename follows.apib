@@ -1,0 +1,71 @@
+# Group Follows
+The connection of users following other entities such as writers, curators, tags, and posts.
+
+A Follow resource has the following attributes:
+
+- **Id**: (int, required) Unique identifier
+- **FollowerId**: (int, required) The id of the following user
+- **FolloweeId**: (int, required) The id of the entity being followed
+- **Type**: (string, one of {"writer", "curator", "group", "tag"}, required) The type of entity being followed
+- **CreatedAt**: (datetime, required) The time of creation of the resource
+- **UpdatedAt**: (datetime, required) The latest time of modification of the resource
+
+The attributes *Id*, *FollowerId*, *CreatedAt*, and *UpdatedAt* are set by the TrunkTrunk API.
+
+
+## -> /follows [/follows]
+
+### Create [POST]
+Create a new Follow
+
+Any signed in user can do this request.
+
++ Request (application/json)
+
+        {
+          "FolloweeId": 7,
+          "Type": "Writer"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "Id": 54,
+          "FollowerId": 13,
+          "FolloweeId": 7,
+          "Type": "Writer",
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z"
+        }
+
+
+## -> /follows/{followType}/{id} [/follows/{followType}/{id}]
+
++ Parameters
+    + followType (required, string, `writer`) ... The type of the entity being followed
+    + id (required, number, `1`) ... Id of the entity being followed.
+
+### Get [GET]
+Get the Follow with the current user as follower and the followee with the
+given id and type.
+
+Any signed in user can do this request.
+
++ Response 201 (application/json)
+
+        {
+          "Id": 54,
+          "FollowerId": 13,
+          "FolloweeId": 7,
+          "Type": "Writer",
+          "CreatedAt": "2014-04-14T02:15:15Z", 
+          "UpdatedAt": "2014-04-14T02:15:15Z"
+        }
+
+### Delete [DELETE]
+Delete the Follow with the current user as follower and the followee with the
+given id and type.
+
+Only the follower can delete it.
+
++ Response 204

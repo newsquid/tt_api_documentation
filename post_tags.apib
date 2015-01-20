@@ -1,0 +1,51 @@
+# Group PostTags
+A tag on a post.
+
+A PostTag resource has the following attributes:
+
+- **Id**: (int, required)
+- **Name**: (string, required) The name / text of the tag
+
+The *Id* attribute is managed by the TT api.
+
+## -> /posts/tags/name/{name} [/posts/tags/name/{name}]
+
++ Parameters
+    + name (required, string, `Tag 1`) ... Name of the Tag.
+
+### Get by name [GET]
+Get the PostTag with the given name.
+
+Anyone can do this request.
+
++ Response 200 (application/json)
+
+        {
+          "Id": 7,
+          "Name": "Tag 1"
+        }
+
+
+## -> /posts/tags/followed [/posts/tags/followed{?items_per_page,page}]
+
++ Parameters
+    + items_per_page (optional, number, `1`) ... How many post tags to return per request.
+    + page (optional, number, `1`) ... How many *items_per_page* to skip.
+
+### Get [GET]
+Get a list of the post tags followed by the current user.
+
+Any signed in user can do this request.
+
++ Response 200 (application/json)
+
+        [
+            {
+              "Id": 7,
+              "Name": "Tag 1"
+            },
+            {
+              "Id": 13,
+              "Name": "Tag 7"
+            }
+        ]
